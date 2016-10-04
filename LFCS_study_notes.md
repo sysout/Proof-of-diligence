@@ -68,3 +68,9 @@ in top, you can toggle:
 * show fields management with 'f', choose the sort field with 's'
 * renice with 'r'
 * kill with 'k'
+
+## htop
+More user friendly than top
+```bash
+$ sudo apt-get install htop
+```
