@@ -13,4 +13,9 @@ http://pawelgoscicki.com/archives/2015/09/testing-database-transactions-explicit
 
 https://www.relishapp.com/rspec/rspec-rails/docs/transactions
 
+### profiling
+```bash
+rspec spec --fail-fast --profile
+```
+
 ## factory girl
