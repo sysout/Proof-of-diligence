@@ -1,5 +1,8 @@
 ## rspec
 
+### rubymine shortcut for jumping to/from a test to its test subject: ⇧⌘T
+https://www.jetbrains.com/help/ruby/8.0/navigating-between-test-and-test-subject.html
+
 ### before, before(:all), before(:each)
 before is equivalent to before :each, not before :all
 
