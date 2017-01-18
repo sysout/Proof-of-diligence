@@ -86,3 +86,7 @@ $ sudo apt-get install htop
 
 ## TODO systemd
 
+## check who accessed your server
+```bash
+cat /var/log/auth.log|grep "Accepted publickey"
+```
