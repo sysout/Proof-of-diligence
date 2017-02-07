@@ -98,9 +98,9 @@ cat /var/log/auth.log|grep "Accepted publickey"
 sudo httpry -i eth0
 # tcpflow couldn't decompress gzipped payload
 # print out to console
-sudo tcpflow -Z -p -c -e -i eth0 port 80
+sudo tcpflow -Z -p -c -e http -i eth0 port 80 or port 8080
 # write to disk
-sudo tcpflow -AH -i eth0 -e port 80
+sudo tcpflow -i eth0 -e http port 80 or port 8080
 # once write to the disk, you can decompress the gzipped file, like
 cat 010.010.010.010.00080-204.204.204.204.57543-HTTPBODY | gzip -d
 # mitmproxy looks like a solid option to check gzipped traffic
