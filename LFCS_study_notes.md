@@ -96,12 +96,18 @@ cat /var/log/auth.log|grep "Accepted publickey"
 ```bash
 # httpry doesn't record payload
 sudo httpry -i eth0
-# tcpflow couldn't decompress gzipped payload
+```
+### tcpflow
+tcpflow may not decompress gzipped payload. In that case, use chrome requestly extension and delete Accept-Encoding header from the http request.
+```bash
 # print out to console
-sudo tcpflow -Z -p -c -e http -i eth0 port 80 or port 8080
+sudo tcpflow -Z -J -p -c -e http -i eth0 '(port 80 or port 8080) and net 204.204.204.204'
 # write to disk
 sudo tcpflow -i eth0 -e http port 80 or port 8080
 # once write to the disk, you can decompress the gzipped file, like
 cat 010.010.010.010.00080-204.204.204.204.57543-HTTPBODY | gzip -d
+```
+### mitmproxy
+```bash
 # mitmproxy looks like a solid option to check gzipped traffic
 ```
