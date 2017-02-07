@@ -101,5 +101,7 @@ sudo httpry -i eth0
 sudo tcpflow -Z -p -c -e -i eth0 port 80
 # write to disk
 sudo tcpflow -AH -i eth0 -e port 80
-# mitmproxy looks like a solid option
+# once write to the disk, you can decompress the gzipped file, like
+cat 010.010.010.010.00080-204.204.204.204.57543-HTTPBODY | gzip -d
+# mitmproxy looks like a solid option to check gzipped traffic
 ```
