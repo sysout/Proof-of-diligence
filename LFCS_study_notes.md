@@ -90,3 +90,16 @@ $ sudo apt-get install htop
 ```bash
 cat /var/log/auth.log|grep "Accepted publickey"
 ```
+
+
+## monitor HTTP traffic
+```bash
+# httpry doesn't record payload
+sudo httpry -i eth0
+# tcpflow couldn't decompress gzipped payload
+# print out to console
+sudo tcpflow -Z -p -c -e -i eth0 port 80
+# write to disk
+sudo tcpflow -AH -i eth0 -e port 80
+# mitmproxy looks like a solid option
+```
