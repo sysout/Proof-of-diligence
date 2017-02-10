@@ -101,7 +101,14 @@ sudo httpry -i eth0
 tcpflow may not decompress gzipped payload. In that case, use chrome requestly extension and delete Accept-Encoding header from the http request.
 ```bash
 # print out to console
-sudo tcpflow -Z -J -p -c -e http -i eth0 '(port 80 or port 8080) and net 204.204.204.204'
+sudo tcpflow -g -p -FT -C -e http -i eth0 '(port 80 or port 8080) and net 204.204.204.204'
+# -g: add color 
+# -p: no promiscuous mode
+# -FT: The -F option is all about the format of the output files, and the ‘T’ prepends each file name with an ISO-8601 timestamp. If you output to the console using the -c option, it will still prepend all the lines of your conversation with the timestamp to the millisecond even though you’re not creating any files.
+# -c: The -c option prints to the console instead of creating individual files. By default, TCP Flow creates two files for each TCP conversation – one file for the packets coming in and one for the packets being transmitted. The -c option can be a useful alternative because the console interleaves the input and output packets.
+# -C: Console print without the packet source and destination details
+# https://aws.amazon.com/blogs/ses/tag/tcp-flow/ 
+
 # write to disk
 sudo tcpflow -i eth0 -e http port 80 or port 8080
 # once write to the disk, you can decompress the gzipped file, like
