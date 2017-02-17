@@ -100,7 +100,7 @@ sudo httpry -i eth0
 ### tcpflow
 tcpflow may not decompress gzipped payload. In that case, use chrome requestly extension and delete Accept-Encoding header from the http request.
 ```bash
-# print out to console
+# print out to console, work with version 1.4.5 or higher. If you are using ubuntu trusty, try install from source
 sudo tcpflow -g -p -FT -C -e http -i eth0 '(port 80 or port 8080) and net 204.204.204.204'
 # -g: add color 
 # -p: no promiscuous mode
