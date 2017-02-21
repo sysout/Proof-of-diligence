@@ -12,3 +12,9 @@ http://stackoverflow.com/questions/3534449/why-does-ruby-have-both-private-and-p
 
 ## block
 http://mixandgo.com/blog/mastering-ruby-blocks-in-less-than-5-minutes
+
+## update gem
+```
+gem list '^rails$' --remote --all
+bundle update rails
+```
