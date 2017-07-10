@@ -80,6 +80,34 @@ $ sudo apt-get install htop
 
 * SHR indicates how much of the VIRT size is actually sharable (memory or libraries). In the case of libraries, it does not necessarily mean that the entire library is resident. For example, if a program only uses a few functions in a library, the whole library is mapped and will be counted in VIRT and SHR, but only the parts of the library file containing the functions being used will actually be loaded in and be counted under RES.
 
+## netstat
+```bash
+# p: PID/Program name
+# l: listening
+# n: Show numerical addresses instead of trying to determine symbolic host, port or user names
+# t: tcp
+$ sudo netstat -plnt
+```
+
+## vmstat
+```bash
+# si: swapped in
+# so: swapped out
+$ vmstat 5 10
+procs -----------memory-------------  ---swap---- -----io---- --system--  -----cpu------
+r  b    swpd    free   buff  cache       si    so    bi    bo   in    cs us sy  id wa st
+2  3   138096   3904    140    584    14829 33632 16684 33633 1353 11562 64  9  16 11  0
+7  4   156592   3800    132    492    53570 48618 54264 48622 2762 8148  20  5  50 24  0
+2  7   258552   3040    128    668    37910 39822 39766 39826 2763 10861 43  8  23 26  0
+7  4   261608   4312    116    776    41696 30854 42171 30855 2771 8631  26  6  33 35  0
+3  4   259316   3824    112    576    44616 32316 44697 32320 2746 7087  15  4  52 28  0
+0  5   257000   3376    116    880    25895 19847 26622 19848 1673 2877   1  2  68 29  0
+4  4   263240   3384    124   1424    30018 21066 30497 21070 1732 4559   9  3  64 24  0
+2 14   264656   5740    120   1812    27685 19030 28029 19031 2194 5345  11  3  51 35  0
+6  3   338044   3764    132   1568    20087 31066 20470 31070 1798 9847  46  6  33 14  0
+2  4   325904   4048    108   1172    13251 7190  13812  7190 1193 8838  38  5  24 32  0
+```
+
 ## TODO strace
 
 ## TODO monit
