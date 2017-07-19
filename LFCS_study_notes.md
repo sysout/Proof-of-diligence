@@ -89,6 +89,12 @@ $ sudo apt-get install htop
 $ sudo netstat -plnt
 ```
 
+## lsof
+netstat is not use friendly on mac, so use lsof instead
+```bash
+$ sudo lsof -PiTCP -sTCP:LISTEN
+```
+
 ## vmstat
 ```bash
 # si: swapped in
