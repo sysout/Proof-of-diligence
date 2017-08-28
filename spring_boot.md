@@ -26,3 +26,6 @@ http://www.baeldung.com/spring-kafka
 ## JMX
 http://docs.spring.io/spring/docs/current/spring-framework-reference/html/jmx.html
 https://looksok.wordpress.com/2016/06/19/spring-jmx-manage-beans-in-runtime/
+
+## Trend
+https://www.youtube.com/playlist?list=PLTwx5YGQHdjkEgJFEojkkhgprli4Vv0Ng
