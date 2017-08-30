@@ -1,0 +1,8 @@
+## zookeeper stat
+telnet localhost 2181
+
+## create a topic
+bin/kafka-topics.sh --create --topic my_topic --zookeeper localhost:2181 --replication-factor 1 --partitions 1
+
+## list topics
+bin/kafka-topics.sh --list --zookeeper localhost:2181
