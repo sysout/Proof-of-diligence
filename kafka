@@ -6,3 +6,9 @@ bin/kafka-topics.sh --create --topic my_topic --zookeeper localhost:2181 --repli
 
 ## list topics
 bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+## produce messages
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my_topic
+
+## consume messages about a topic
+bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic my_topic --from-beginning
