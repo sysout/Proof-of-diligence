@@ -29,3 +29,9 @@ https://looksok.wordpress.com/2016/06/19/spring-jmx-manage-beans-in-runtime/
 
 ## Trend
 https://www.youtube.com/playlist?list=PLTwx5YGQHdjkEgJFEojkkhgprli4Vv0Ng
+
+## Call @Bean annotated method
+https://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans.html#beans-java-further-information-java-config
+
+All @Configuration classes are subclassed at startup-time with CGLIB. In the subclass, the child method checks the container first for any cached (scoped) beans before it calls the parent method and creates a new instance.
+
