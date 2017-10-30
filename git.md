@@ -7,9 +7,15 @@ git clean removes all untracked files (warning: while it won't delete ignored fi
 
 ## reset
 reset to a previous state
-```git reset --hard
+```
+git reset --hard
 ```
 Use the git-reflog command to find the SHA-1 of the previous state and then reset to it.
+
+## remove files from git staging area
+```
+git reset HEAD -- .
+```
 
 ## Checkout github pull requests locally
 https://gist.github.com/piscisaureus/3342247
