@@ -17,6 +17,11 @@ Use the git-reflog command to find the SHA-1 of the previous state and then rese
 git reset HEAD -- .
 ```
 
+## revert to a previous commit
+```
+git reset --soft HEAD@{1}
+```
+
 ## Checkout github pull requests locally
 https://gist.github.com/piscisaureus/3342247
 
