@@ -5,13 +5,6 @@ git checkout -- .
 ```
 git clean removes all untracked files (warning: while it won't delete ignored files mentioned directly in .gitignore, it may delete ignored files residing in folders) and git checkout clears all unstaged changes.
 
-## reset
-reset to a previous state
-```
-git reset --hard
-```
-Use the git-reflog command to find the SHA-1 of the previous state and then reset to it.
-
 ## remove files from git staging area
 ```
 git reset HEAD -- .
@@ -21,6 +14,14 @@ git reset HEAD -- .
 ```
 git reset --soft HEAD@{1}
 ```
+
+## reset (dangerous)
+reset to a previous state and discard all changes
+```
+git reset --hard
+git reset --hard f414f31
+```
+the commits after f414f31 will no longer be in the history of your master branch
 
 ## Checkout github pull requests locally
 https://gist.github.com/piscisaureus/3342247
