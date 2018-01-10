@@ -1,5 +1,7 @@
 ## discard unstaged changes in Git
+Do a [Dry run first](https://stackoverflow.com/questions/15840009/undo-a-git-clean-command/15840063#15840063)!!!
 ```
+git clean -n
 git clean -df
 git checkout -- .
 ```
