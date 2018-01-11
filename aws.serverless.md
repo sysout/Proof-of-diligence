@@ -1,94 +1,142 @@
+## Chris Munns
+- [Local Testing and Deployment Best Practices for Serverless Applications](https://www.youtube.com/watch?v=QRSc1dL-I4U)
+- [Building CI/CD Pipelines  +for Serverless Applications](https://www.youtube.com/watch?v=dCDZ7HR7dms)
+  * CodeStar
+  * api gateway canaries
+  * https://aws.amazon.com/serverless/serverlessrepo/
+- [Building a Development Workflow for Serverless Applications](https://www.youtube.com/watch?v=e3lreqpWN0A)
+  * Model your application and infrastructure resources
+    + [AWS Serverless Application Model (SAM)](https://youtu.be/e3lreqpWN0A?t=577), released in fall 2016
+    + ![SAM template](images/2018/01/sam-template.png)
+  * [Configure multiple environments](https://youtu.be/e3lreqpWN0A?t=1163)
+    + Same account, different stacks
+    + Multiple account
+      - AWS Organizations, released in 2017
+  * Establish your testing/validation model
+    + Code Inspection/Test Coverage:
+      - Landscape https://landscape.io only for python
+      - CodeClimate https://codeclimate.com
+      - Coveralls.io https://coveralls.io
+    + Mocking/stubbing tools
+      - https://github.com/atlassian/localstack
+        * https://github.com/spulec/moto
+        * https://github.com/mhart/dynalite
+        * https://github.com/mhart/kinesalite
+    + Api UI testing
+      - Runscope https://www.runscope.com
+      - Ghost Inspector https://ghostinspector.com
+  * Automate your delivery process
+    + [An example minimal pipeline](https://youtu.be/e3lreqpWN0A?t=2186)
+    + ![minimal pipeline](images/2018/01/minimal-pipeline.png)
+  * [Demo](https://youtu.be/e3lreqpWN0A?t=2318)
+    + [aws-serverless-samfarm](https://github.com/awslabs/aws-serverless-samfarm)
+
+## Orr Weinstein
+- [Authoring and Deploying Serverless Applications with AWS Cloud9](https://www.youtube.com/watch?v=pMyniSCOJdA)
+  * Serverless IDE for Serverless development. Github integration already included and compatible with Eclipse via CodeStar! Also SSH from Cloud9 to EC2 instance
+  * Useful keyboard shortcuts
+    + Full screen (`Cmd + Shift + F`)
+    + Cache file locally (`Cmd + S`)
+    + Save UpdateFunctionCode (`Cmd + Shift + U`)
+    + Test (`Cmd + I`)
+    + Configure test event (`Cmd + J`)
+  * [SAM Local](https://github.com/awslabs/aws-sam-local): CLI tool for local testing of serverless apps
+    + leverage docker images to mimic Lambda's execution environment
+    + `sam local generate-event s3 --bucket <bucket> --key <key>`
+    + `npm install -g aws-sam-local`
+    + written in go
+      - `sam local`
+      - `sam validate`
+      - `sam package`
+      - `sam deploy`
+      - `sam help`
+    + available in AWS Cloud9
+
 ## Serverless Sample app
-* [Amazon Web Services - Labs](https://github.com/awslabs?utf8=%E2%9C%93&q=serverless&type=&language=)
+- [Amazon Web Services - Labs](https://github.com/awslabs?utf8=%E2%9C%93&q=serverless&type=&language=)
   * [SpaceFinder - Serverless Auth Reference App](https://github.com/awslabs/aws-serverless-auth-reference-app)
-    * How to Generate Client Code?
+    + How to Generate Client Code?
   * [AWSCognitoSampleDeveloperAuthenticationSample](https://github.com/awslabs/amazon-cognito-developer-authentication-sample)
   * [AWS Serverless Application Model (AWS SAM)](https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md)
-    * AWS Serverless Application Model (AWS SAM) allows you to easily create and manage resources used in your serverless application using AWS CloudFormation.
+    + AWS Serverless Application Model (AWS SAM) allows you to easily create and manage resources used in your serverless application using AWS CloudFormation.
   * [aws-cognito-apigw-angular-auth](https://github.com/awslabs/aws-cognito-apigw-angular-auth)
   * [aws-cognito-quicksight-auth](https://github.com/awslabs/aws-cognito-quicksight-auth)
-    * [Secure API Access with Amazon Cognito Federated Identities, Amazon Cognito User Pools, and Amazon API Gateway](https://aws.amazon.com/blogs/compute/secure-api-access-with-amazon-cognito-federated-identities-amazon-cognito-user-pools-and-amazon-api-gateway/)
+    + [Secure API Access with Amazon Cognito Federated Identities, Amazon Cognito User Pools, and Amazon API Gateway](https://aws.amazon.com/blogs/compute/secure-api-access-with-amazon-cognito-federated-identities-amazon-cognito-user-pools-and-amazon-api-gateway/)
   * Android example code: https://docs.aws.amazon.com/cognito/latest/developerguide/using-amazon-cognito-user-identity-pools-android-sdk.html
   * how to use Cognito from the server side: https://github.com/kdgregory/example-cognito-java
-    * example-cognito-java $ src/scripts/cognito-create-userpool.sh Example Example
-    - User Pool ID:  us-east-1_2wc4ItB7S
-    - Client ID:     6ejs2tnq2uopa4cjhiet7pvei9
+    + example-cognito-java $ src/scripts/cognito-create-userpool.sh Example Example
+    + User Pool ID:  us-east-1_2wc4ItB7S
+    + Client ID:     6ejs2tnq2uopa4cjhiet7pvei9
       - The AWS Java SDK includes APIs to authenticate users in a User Pool. You can authenticate a user using either the InitiateAuth api or AdminInitiateAuth api of the AWSCognitoIdentityProviderClient class. The difference between these two API is explained in the documentation. In short, for InitiateAuth, you need to perform SRP calculations and then pass it to the API, while in AdminInitiateAuth you can directly pass the username and password. You can read about the security implications in both cases and decide which one to use.
 
-
-
-
 ## API reference
-* **Read** the [Amazon Cognito Developer Guide](http://docs.aws.amazon.com/cognito/devguide/)
-* **Read** the [Identity API Reference](http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html)
-* **Ask us questions** on the [Amazon Cognito Forums](https://forums.aws.amazon.com/forum.jspa?forumID=173) or open an issue on Github
-* https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html
+- **Read** the [Amazon Cognito Developer Guide](http://docs.aws.amazon.com/cognito/devguide/)
+- **Read** the [Identity API Reference](http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html)
+- **Ask us questions** on the [Amazon Cognito Forums](https://forums.aws.amazon.com/forum.jspa?forumID=173) or open an issue on Github
+- https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html
   * **To use Amazon Cognito Federated Identities. Set the authorization type of your API to AWS_IAM**
-    - Verify that AWS_IAM authorization settings are in effect by making a SigV4 signed request (such as through the Postman application using AWS Signature Authorization type) to the URL using IAM credentials from an IAM user that is a member of the group with the attached AmazonAPIGatewayInvokeFullAccess policy.
+    + Verify that AWS_IAM authorization settings are in effect by making a SigV4 signed request (such as through the Postman application using AWS Signature Authorization type) to the URL using IAM credentials from an IAM user that is a member of the group with the attached AmazonAPIGatewayInvokeFullAccess policy.
   * [Call an API Integrated with a User Pool](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-invoke-api-integrated-with-cognito-user-pool.html)
-* [AWS Signature Version 4](https://docs.aws.amazon.com/apigateway/api-reference/signing-requests/)
-
+- [AWS Signature Version 4](https://docs.aws.amazon.com/apigateway/api-reference/signing-requests/)
 
 # Amazon lambda
-* Synchronous(push): Amazon API Gateway->lambda
-* Asynchronous(event): Amazon SNS / S3 -> lambda
-* Stream-based: DynamoDB / Kinesis -> lambda
+- Synchronous(push): Amazon API Gateway->lambda
+- Asynchronous(event): Amazon SNS / S3 -> lambda
+- Stream-based: DynamoDB / Kinesis -> lambda
 
 AWS Lambda quickstart:
-* https://www.youtube.com/watch?v=zaWxdVUFFcE
-* /Users/xxiong003c/scala.workspace/HelloTest
+- https://www.youtube.com/watch?v=zaWxdVUFFcE
+- /Users/xxiong003c/scala.workspace/HelloTest
 
 # Amazon API gateway:
-* https://www.youtube.com/watch?v=hUbS7-Jfhgs
-* https://app.pluralsight.com/library/courses/scalable-aws-api-gateway/table-of-contents
-* AWSCredentialsProvider https://youtu.be/e9B-eIAirZ4?t=1197
+- https://www.youtube.com/watch?v=hUbS7-Jfhgs
+- https://app.pluralsight.com/library/courses/scalable-aws-api-gateway/table-of-contents
+- AWSCredentialsProvider https://youtu.be/e9B-eIAirZ4?t=1197
   * https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/auth/AWSCredentialsProvider.html
   * [CognitoCredentialsProvider for android](https://github.com/aws/aws-sdk-android/blob/master/aws-android-sdk-core/src/main/java/com/amazonaws/auth/CognitoCredentialsProvider.java)
-* [SwaggerHub AWS API Gateway Integration](https://www.youtube.com/watch?v=qsTKxD7pkPk)
-* Chris Munns
-  * [Building a Development Workflow for Serverless Applications - March 2017 AWS Online Tech Talks](https://www.youtube.com/watch?v=e3lreqpWN0A)
-* Kenn Brodhagen
+- [SwaggerHub AWS API Gateway Integration](https://www.youtube.com/watch?v=qsTKxD7pkPk)
+- Kenn Brodhagen
   * [How to create a Request object for AWS API Gateway & Lambda](https://www.youtube.com/watch?time_continue=38&v=2Z-Utw_xl4c)
-* Justin Pirtle
+- Justin Pirtle
   * Intro: https://www.youtube.com/watch?v=AV24RTvbgWA
   * 2016 Demo: https://www.youtube.com/watch?v=n4hsWVXCuVI
   * 2017 Demo: https://www.youtube.com/watch?v=VZqG7HjT2AQ
   * MBL305
   * SID332: A Deep Dive on Amazon Cognito
-    * https://www.youtube.com/watch?v=wlSba1dXAhc
+    + https://www.youtube.com/watch?v=wlSba1dXAhc
   * SID343 Tim Hunt: User management and app Authentication with Amazon Cognito
   * SRV425: Serverless OAuth: Authorizing 3rd party app to your Serverless API
-* API Gateway Access Policies
+- API Gateway Access Policies
   * Action
-    * "apigateway:\*"
-    * "apigateway:GET"
-    * "apigateway:POST"
+    + "apigateway:\*"
+    + "apigateway:GET"
+    + "apigateway:POST"
   * Resource
-    * arn:aws:apigateway:region::api-id:/stage-name/resource-path-specifier
+    + arn:aws:apigateway:region::api-id:/stage-name/resource-path-specifier
   * AWS signature V4, required code included with SDK
   * API Key
-    * writes to CloudWatch Logs
-    * Per method
-    * Not for authorization, better use the followings:
-      * signed API calls
-      * OAuth
-      * Amazon Cognito user pool
-      * https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html
+    + writes to CloudWatch Logs
+    + Per method
+    + Not for authorization, better use the followings:
+      - signed API calls
+      - OAuth
+      - Amazon Cognito user pool
+      - https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html
   * Throttling is achieved using API Keys
   * Three types of authorization
-    * Amazon Cognito User Pools -> User Pools Authorizers
-      * compatible with OpenId / SAML based
-      * Cognito User Pools returns a JWT tokens {Identity, Access, Refresh}
-      * Can't answer: Is this user an admin or basic user.
-      * Can't answer: Can this user access certain type of operations
-    * Amazon Cognito Federated Identities -> AWS IAM authorization
-      * JWT
+    + Amazon Cognito User Pools -> User Pools Authorizers
+      - compatible with OpenId / SAML based
+      - Cognito User Pools returns a JWT tokens {Identity, Access, Refresh}
+      - Can't answer: Is this user an admin or basic user.
+      - Can't answer: Can this user access certain type of operations
+    + Amazon Cognito Federated Identities -> AWS IAM authorization
+      - JWT
         * POST https://cognito-idp.us-east-1.amazonaws.com/
-          * Headers
-            * X-Amz-Content-Sha256:1f04075c3bb71ecc150421102cdf3d8fc57918316126e9d449c380b554e12abb
-            * X-Amz-Target:AWSCognitoIdentityProviderService.InitiateAuth
-            * X-Amz-User-Agent:aws-sdk-js/2.6.4
-          * Request Body:
+          + Headers
+            - X-Amz-Content-Sha256:1f04075c3bb71ecc150421102cdf3d8fc57918316126e9d449c380b554e12abb
+            - X-Amz-Target:AWSCognitoIdentityProviderService.InitiateAuth
+            - X-Amz-User-Agent:aws-sdk-js/2.6.4
+          + Request Body:
             ```json
             {
                "AuthFlow":"USER_SRP_AUTH",
@@ -102,7 +150,7 @@ AWS Lambda quickstart:
                }
             }
             ```
-          * Response Body:
+          + Response Body:
             ```json
             {
                "ChallengeName":"PASSWORD_VERIFIER",
@@ -116,12 +164,11 @@ AWS Lambda quickstart:
             }
             ```
         * POST https://cognito-idp.us-east-1.amazonaws.com/
-          * Headers
-            * X-Amz-Content-Sha256:2e95578e9d942f8a54ad709e7b52f04497a9c0e1c5d02b064bf527d21e1d2a3d
-            * X-Amz-Target:AWSCognitoIdentityProviderService.RespondToAuthChallenge
-            * X-Amz-User-Agent:aws-sdk-js/2.6.4
-
-          * Request Body
+          + Headers
+            - X-Amz-Content-Sha256:2e95578e9d942f8a54ad709e7b52f04497a9c0e1c5d02b064bf527d21e1d2a3d
+            - X-Amz-Target:AWSCognitoIdentityProviderService.RespondToAuthChallenge
+            - X-Amz-User-Agent:aws-sdk-js/2.6.4
+          + Request Body
             ```json
             {
                "ChallengeName":"PASSWORD_VERIFIER",
@@ -134,7 +181,7 @@ AWS Lambda quickstart:
                }
             }
             ```
-          * Request Response
+          + Request Response
           ```json
           {
              "AuthenticationResult":{
@@ -150,12 +197,12 @@ AWS Lambda quickstart:
           }
           ```
 
-      * after JWT token, client request AWS scoped credentials
+      - after JWT token, client request AWS scoped credentials
         * POST https://cognito-identity.us-east-1.amazonaws.com/
-          * Request Headers:
-            * X-Amz-Content-Sha256:08eeeb9126b9ce8e65a1e8ac4b1889e5e3ea2e6d848208e529523ebdf7a24cc3
-            * X-Amz-Target:AWSCognitoIdentityService.GetId
-          * Request Body:
+          + Request Headers:
+            - X-Amz-Content-Sha256:08eeeb9126b9ce8e65a1e8ac4b1889e5e3ea2e6d848208e529523ebdf7a24cc3
+            - X-Amz-Target:AWSCognitoIdentityService.GetId
+          + Request Body:
             ```json
             {
                "IdentityPoolId":"us-east-1:36d52ea3-26a9-4d70-9ba9-a75c75c69efb",
@@ -164,17 +211,17 @@ AWS Lambda quickstart:
                }
             }
             ```
-          * Response Body:
+          + Response Body:
             ```json
             {
                "IdentityId":"us-east-1:1666ff8c-8ddf-42c8-9109-07e2dfd3848c"
             }
             ```
         * POST https://cognito-identity.us-east-1.amazonaws.com/
-          * Request Headers:
-            * X-Amz-Content-Sha256:d974d5d5221000d6b6a8fdc76188a2ac23a229b592ce61cfebd7ee771d7ef515
-            * X-Amz-Target:AWSCognitoIdentityService.GetCredentialsForIdentity
-          * Request Body:
+          + Request Headers:
+            - X-Amz-Content-Sha256:d974d5d5221000d6b6a8fdc76188a2ac23a229b592ce61cfebd7ee771d7ef515
+            - X-Amz-Target:AWSCognitoIdentityService.GetCredentialsForIdentity
+          + Request Body:
             ``` json
             {
                "Logins":{
@@ -183,7 +230,7 @@ AWS Lambda quickstart:
                "IdentityId":"us-east-1:1666ff8c-8ddf-42c8-9109-07e2dfd3848c"
             }
             ```
-          * Response Body:
+          + Response Body:
 
             ```json
             {
@@ -197,33 +244,33 @@ AWS Lambda quickstart:
             }
             ```
 
-      * Cognito Federated Identities returns Temp AWS credentials
-      * Client sign (Sig V4) the request, API gateway check IAM policy
+      - Cognito Federated Identities returns Temp AWS credentials
+      - Client sign (Sig V4) the request, API gateway check IAM policy
         * Request headers:
-          * authorization: AWS4-HMAC-SHA256 Credential=ASIAJD46T43UEJKFRHIQ/20180105/us-east-1/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=7b9329254adf55e948d2cdd70a3fa5f94940fefa4bfe72c85e4c413a07626e86
-          * x-amz-date: 20180105T002642Z
-          * x-amz-security-token: SessionToken from previous response
+          + authorization: AWS4-HMAC-SHA256 Credential=ASIAJD46T43UEJKFRHIQ/20180105/us-east-1/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=7b9329254adf55e948d2cdd70a3fa5f94940fefa4bfe72c85e4c413a07626e86
+          + x-amz-date: 20180105T002642Z
+          + x-amz-security-token: SessionToken from previous response
         * Authenticated Users
-          * Default role
-          * Choose role from rule
-          * Choose role from token (particularly for Cognito User Pools)
-            * Cognito Groups: a user can be in more than one group
-    * Custom Identity Provider -> Custom Authorizers
+          + Default role
+          + Choose role from rule
+          + Choose role from token (particularly for Cognito User Pools)
+            - Cognito Groups: a user can be in more than one group
+    + Custom Identity Provider -> Custom Authorizers
 
 # [Auditing and Logging](https://youtu.be/AV24RTvbgWA?t=2166)
 ## [AWS CloudTrail (Records AWS API calls for your account)](https://youtu.be/AV24RTvbgWA?t=2279)
-* Who made the API call?
-* What was the API call?
-* When was the API call made?
-* Where was the API call made from and made to?
-* Which resources were acted upon in the API call?
+- Who made the API call?
+- What was the API call?
+- When was the API call made?
+- Where was the API call made from and made to?
+- Which resources were acted upon in the API call?
 
 
 ## [AWS config](https://youtu.be/AV24RTvbgWA?t=2302)
-* Get inventory of AWS resource
-* Record configuration changes continuously
-* Discover new and deleted resources
-* Get notified when configuration change
+- Get inventory of AWS resource
+- Record configuration changes continuously
+- Discover new and deleted resources
+- Get notified when configuration change
 
 ## Programming Amazon Cognito ([by far the worst-documented Amazon service](https://github.com/kdgregory/example-cognito-java))
 
