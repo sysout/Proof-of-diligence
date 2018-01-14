@@ -1,8 +1,13 @@
+## [Atom Basics](http://flight-manual.atom.io/getting-started/sections/atom-basics/)
+
 ## Shortcuts
-- open settings (cmd + ,)
-- run command (cmd + shift + p)
-- "Move Line Up" (Ctrl Cmd Up)
-- "Move Line Down" (Ctrl Cmd Down)
+- open markdown file preview (`Ctrl Shift M`)
+- open search-driven menu (`Cmd Shift P`)
+- find file (`Cmd P` or `Cmd T`)
+- open settings (`cmd ,`)
+- run command (`cmd Shift p`)
+- "Move Line Up" (`Ctrl Cmd Up`)
+- "Move Line Down" (`Ctrl Cmd Down`)
 
 ## Config
 - menu (Atom -> Config...)
@@ -16,7 +21,7 @@ https://github.com/zhuochun/md-writer/wiki/Settings
   - Insert inline link.
   - Insert reference link with title. _Use `-` in title field to create an empty title reference link._
   - Remove link (and its reference) after URL is deleted.
-  - Search published posts by title in your blog.
+  - Search published posts by title in your blog.f
 - **Insert footnote** (`markdown-writer:insert-footnote`), and edit footnote labels.
 - **Insert image from file or clipboard** (`shift-cmd-i`), preview image and able to copy image to your blog's images directory.
 - **Insert table** (`markdown-writer:insert-table`), and quick **jump to next table cell** (`cmd-j cmd-t`).
