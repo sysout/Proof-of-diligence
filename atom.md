@@ -5,9 +5,11 @@
 - open search-driven menu (`Cmd Shift P`)
 - find file (`Cmd P` or `Cmd T`)
 - open settings (`cmd ,`)
-- run command (`cmd Shift p`)
+- toggle tree view (`cmd \`)
 - "Move Line Up" (`Ctrl Cmd Up`)
 - "Move Line Down" (`Ctrl Cmd Down`)
+-  (`Alt Shift k`)
+- delete line (`Ctrl Shift k`)
 
 ## Config
 - menu (Atom -> Config...)
