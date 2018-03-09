@@ -1,7 +1,14 @@
+## [AWS Developer: The Big Picture](https://app.pluralsight.com/library/courses/aws-developer-big-picture/table-of-contents)
+
+## CodeStar
+- [AWS CodeStar: Who is it for?](https://www.youtube.com/watch?v=rrbp-IVwFGY)
+  * pros
+  * cons
+
 ## Chris Munns
 - [Local Testing and Deployment Best Practices for Serverless Applications](https://www.youtube.com/watch?v=QRSc1dL-I4U)
 - [Building CI/CD Pipelines  +for Serverless Applications](https://www.youtube.com/watch?v=dCDZ7HR7dms)
-  * CodeStar
+  * [CodeStar](https://youtu.be/dCDZ7HR7dms?t=2156)
   * api gateway canaries
   * https://aws.amazon.com/serverless/serverlessrepo/
 - [Building a Development Workflow for Serverless Applications](https://www.youtube.com/watch?v=e3lreqpWN0A)
@@ -51,6 +58,11 @@
       - `sam deploy`
       - `sam help`
     + available in AWS Cloud9
+    + Safe deployments baked into SAM
+      - Lambda alias now enable traffic shifting
+      - CodeDeploy integration for deployment automation
+      - Deployment automation natively supported in SAM
+    + https://aws.amazon.com/serverless/developer-tools/
 
 ## Serverless Sample app
 - [Amazon Web Services - Labs](https://github.com/awslabs?utf8=%E2%9C%93&q=serverless&type=&language=)

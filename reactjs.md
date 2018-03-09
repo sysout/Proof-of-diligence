@@ -1,0 +1,2 @@
+- [setState({ myvar: value})](https://stackoverflow.com/questions/35904007/do-i-have-to-use-this-state-in-react-to-maintain-component-state)
+  * this.state in a react component is a special React-backed container that is only acknowledged as having been updated when you use **setState**, which triggers a re-render, which might cause DOM updates (or not, depending on what React's diff algorithm sees happening in the JS virtual dom).

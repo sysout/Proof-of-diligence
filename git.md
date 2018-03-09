@@ -1,3 +1,11 @@
+## GUI
+https://www.sourcetreeapp.com/
+
+## checkout file/folders from remote branch
+```
+git checkout upstream/master -- folder/file
+```
+
 ## discard unstaged changes in Git
 Do a [Dry run first](https://stackoverflow.com/questions/15840009/undo-a-git-clean-command/15840063#15840063)!!!
 ```
@@ -35,4 +43,20 @@ https://git.seveas.net/the-meaning-of-refs-and-refspecs.html
 ### show refs
 ```
 git show-ref
+```
+
+### revert a git pull
+```
+git reflog
+git reset --hard <hash found above>
+```
+
+### Git Checkout Remote Branch
+```
+git fetch origin
+git checkout -b workingbranch origin/branchxyz
+```
+Or you can use:
+```
+git branch workingbranch origin/branchxyz
 ```
