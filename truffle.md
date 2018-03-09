@@ -1,0 +1,1 @@
+- solidity struct will not mapped to keys in the js test

@@ -53,3 +53,6 @@ https://github.com/zhuochun/md-writer/wiki/Settings
   [82a2aced]: https://atom.io/packages/tool-bar-markdown-writer "Toobar for Markdown Writer"
   [2f0cb1f9]: https://atom.io/packages/language-asciidoc "AsciiDoc Language Package for Atom"
   [adaa9527]: https://github.com/zhuochun/md-writer/wiki/Settings#use-different-unordered-list-styles "Customizations"
+
+## [Document Outline](https://atom.io/packages/document-outline)
+## [atom-shortcuts package](https://atom.io/packages/atom-shortcuts)

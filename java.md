@@ -140,6 +140,26 @@ intervals.sort(Comparator.<Interval, Integer> comparing(a -> a.start).thenCompar
 Collections.sort(intervals, Comparator.comparing((Interval a) -> a.start).thenComparing(a -> a.end));
 ```
 
+## Collections
+- Collections.singleton(obj)
+- Collections.singletonList(obj)
+- Collections.singletonMap(key, value)
+- Collections.removeIf(Predicate<? super E> filter)
+  ```java
+  public static void main(String[] args) {
+    Map<String, String> map = new HashMap<String, String>();
+    map.put("1", "One");
+    map.put("2", "Two");
+    map.put("3", null);
+    map.put("4", "Four");
+    map.put("5", null);
+    System.out.println(map);
+    map.values().removeIf(Objects::isNull);
+    System.out.println(map);
+  }
+  ```
+
+
 ### List
 - Print list: `intervals.forEach((intervals a) -> System.out.printf("[%d, %d], ", a.start, a.end));`
 - `List<Integer> arr=new ArrayList<Integer>(Collections.nCopies(10, 0));`

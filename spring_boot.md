@@ -35,3 +35,13 @@ https://docs.spring.io/spring/docs/current/spring-framework-reference/html/beans
 
 All @Configuration classes are subclassed at startup-time with CGLIB. In the subclass, the child method checks the container first for any cached (scoped) beans before it calls the parent method and creates a new instance.
 
+## Others
+- When a spring component has a single constructor, spring will autowire the parameter of the constructor without using the @Autowire annotation
+- CommandLineRunner: run some scripts during application startup
+- MapStruct
+- Project Lombok
+- bean
+  * @Primary
+- @Autowired
+  * @Qualifier
+- @RunWith(SpringRunner.class) is a alias of @RunWith(SpringJUnit4ClassRunner.class)

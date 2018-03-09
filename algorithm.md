@@ -207,8 +207,33 @@ SOLID:
   }
   ```
 
+## jiuzhang dp
+### Chapter 1
+- what dp ask for?
+  * count
+  * min/max
+  * true/false(exist or not)
+    + OR
+- four key component for dp
+  * state definition
+    + the last step
+    + convert to subproblem
+  * transition function
+  * initial state and bound
+  * correct computation sequence
+- exercise
+  * [669. Coin Change](http://www.lintcode.com/en/problem/coin-change/)
+  * `*` [114. Unique Paths](http://www.lintcode.com/en/problem/unique-paths/)
+  * [116. Jump Game](http://www.lintcode.com/en/problem/jump-game/)
+  * `***` [191. Maximum Product Subarray](http://www.lintcode.com/en/problem/maximum-product-subarray/)
+### Chapter 2
+- exercise
+  * [115. Unique Paths II](http://www.lintcode.com/en/problem/unique-paths-ii/)
+  * [515. Paint House](http://www.lintcode.com/en/problem/paint-house/)
+  * 
+
 ## By category
-- math
+- [math](https://leetcode.com/tag/math/)
   * `*`[418. Integer to Roman](http://www.lintcode.com/en/problem/integer-to-roman/)
 - matrix
   * `*`[161. Rotate Image](http://www.lintcode.com/en/problem/rotate-image/)
@@ -350,8 +375,13 @@ SOLID:
     + 通过 Kruskal 算法，将含有位置 0 结点的子树和含有位置 n 结点的子树合并时的那条边的权值为答案。
     + UnionFind实际应用
 - [Weekly Contest 3](http://lintcode.com/contest/11/)
-    + `*`[792. Kth prime number](http://lintcode.com/en/problem/kth-prime-number/)
-      - http://www.jiuzhang.com/solution/kth-prime-number/
+  * `*`[792. Kth prime number](http://lintcode.com/en/problem/kth-prime-number/)
+    + http://www.jiuzhang.com/solution/kth-prime-number/
+- [Weekly Mock Interview Contest #6 (For Google Onsite)](http://lintcode.com/contest/15/)
+  * `**`[826. Computer Maintenance](http://lintcode.com/en/problem/computer-maintenance/)
+- [Weekly Mock Interview Contest #7 (For Bloomberg Onsite)](http://www.lintcode.com/contest/16/)
+  * [830. String Sort](http://www.lintcode.com/en/problem/string-sort/)
+    + `new String(str.chars().boxed().sorted(Comparator.comparing(p -> -set.get(p)[1]).thenComparing(p -> (int) p)).mapToInt(e -> e).toArray(), 0, n);`
 
 ## [Google](http://lintcode.com/problem/?tag=google&ordering=-frequency)
 - [面筋](https://docs.google.com/document/d/191QbufdfYBF4fXPAtwJ4xQBPLgAcy2VsgHqBU9JncbM/mobilebasic)

@@ -1,3 +1,8 @@
+- ethos
+- inexplicably
+- egalitarian
+- mortal coil
+  * So either Satoshi handled this himself in November 2013 or he provided the account details to someone before he left his mortal coil.
 - granular
 - quadrant
   * 象限；四分之一圆
