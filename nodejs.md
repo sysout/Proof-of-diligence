@@ -25,3 +25,16 @@ nvm ls
 nvm which 6
 ```
 http://tinyurl.com/y7ve6zjg
+
+## http-server
+
+```bash
+npm install http-server -g
+cd MyApp
+http-server
+```
+
+[Retry Refresh Token Pattern with Node Promises and Salesforce](http://www.tonytruong.net/retry-refresh-token-pattern-with-node-promises-and-salesforce/)
+
+TODO: https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/
+node with babel: https://github.com/babel/example-node-server

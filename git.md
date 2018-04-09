@@ -25,6 +25,15 @@ git reset HEAD -- .
 git reset --soft HEAD@{1}
 ```
 
+## [git index and git diff](http://alblue.bandlem.com/2011/10/git-tip-of-week-understanding-index.html)
+
+```bash
+# for unstaged changes
+git diff filename
+# for staged changes
+git diff --cached
+```
+
 ## reset (dangerous)
 reset to a previous state and discard all changes
 ```
@@ -32,6 +41,17 @@ git reset --hard
 git reset --hard f414f31
 ```
 the commits after f414f31 will no longer be in the history of your master branch
+
+## [git rebase](https://www.youtube.com/watch?v=TymF3DpidJ8)
+```
+git checkout somebranch
+git log --oneline --all --decorate
+git rebase master
+git checkout master
+git merge somebranch
+```
+
+## [Squashing multiple commits into a single one](https://www.youtube.com/watch?v=gXCkYkLQ3To)
 
 ## Checkout github pull requests locally
 https://gist.github.com/piscisaureus/3342247
