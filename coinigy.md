@@ -1,0 +1,3 @@
+- indicators
+  * volume
+  * RSI

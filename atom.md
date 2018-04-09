@@ -10,13 +10,14 @@
 - "Move Line Down" (`Ctrl Cmd Down`)
 -  (`Alt Shift k`)
 - delete line (`Ctrl Shift k`)
+- toggle git tab (`Ctrl Shift 9`)
 
 ## Config
 - menu (Atom -> Config...)
 
 ## Markdown Writer
-https://github.com/zhuochun/md-writer/wiki/Settings
-
+- https://github.com/zhuochun/md-writer/wiki/Settings
+- [enable shortcuts](https://github.com/zhuochun/md-writer/wiki/Settings-for-Keymaps)
 - **Continue lists or table rows** when you press `enter` ([customize][adaa9527]).
   - **Correct ordered list numbers** (`markdown-writer:correct-order-list-numbers`).
 - **Insert link** (`shift-cmd-k`) and **automatically link to the text next time**.
@@ -56,3 +57,4 @@ https://github.com/zhuochun/md-writer/wiki/Settings
 
 ## [Document Outline](https://atom.io/packages/document-outline)
 ## [atom-shortcuts package](https://atom.io/packages/atom-shortcuts)
+## [markdown-scroll-sync Atom editor package](https://atom.io/packages/markdown-scroll-sync)

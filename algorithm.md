@@ -48,7 +48,7 @@ SOLID:
         ```
   * [406. Minimum Size Subarray Sum](http://www.lintcode.com/en/problem/minimum-size-subarray-sum/)
     + valid condition: `sum >= s`
-  * [32. Minimum Window Substring](http://www.lintcode.com/en/problem/minimum-window-substring/)
+  * `*` [32. Minimum Window Substring](http://www.lintcode.com/en/problem/minimum-window-substring/)
     + valid condition `validLen >= target.length()`
   * [384. Longest Substring Without Repeating Characters](http://www.lintcode.com/en/problem/longest-substring-without-repeating-characters/)
     + valid condition `map[cur] == false`
@@ -226,16 +226,92 @@ SOLID:
   * `*` [114. Unique Paths](http://www.lintcode.com/en/problem/unique-paths/)
   * [116. Jump Game](http://www.lintcode.com/en/problem/jump-game/)
   * `***` [191. Maximum Product Subarray](http://www.lintcode.com/en/problem/maximum-product-subarray/)
+
 ### Chapter 2
 - exercise
   * [115. Unique Paths II](http://www.lintcode.com/en/problem/unique-paths-ii/)
   * [515. Paint House](http://www.lintcode.com/en/problem/paint-house/)
-  * 
+  * `**` [512. Decode Ways](http://www.lintcode.com/en/problem/decode-ways/)
+    + reject invalid string first
+  * `**` [553. Bomb Enemy](http://www.lintcode.com/en/problem/bomb-enemy/)
+  * `**` [664. Counting Bits](http://www.lintcode.com/en/problem/counting-bits/)
+
+### Chapter 3
+- 有状态的序列型动态规划(不知道的信息加入状态)
+  * `*` [516. Paint House II](http://www.lintcode.com/en/problem/paint-house-ii/)
+    + O(nk)
+  * [392. House Robber](http://www.lintcode.com/en/problem/house-robber/)
+  * [534. House Robber II](http://www.lintcode.com/en/problem/house-robber-ii/)
+  * [149. Best Time to Buy and Sell Stock](http://www.lintcode.com/en/problem/best-time-to-buy-and-sell-stock/)
+  * [150. Best Time to Buy and Sell Stock II](http://www.lintcode.com/en/problem/best-time-to-buy-and-sell-stock-ii/)
+  * `***` [151. Best Time to Buy and Sell Stock III](http://www.lintcode.com/en/problem/best-time-to-buy-and-sell-stock-iii/)
+    + f[i][j] -> 前i天结束后，在阶段j的最大获利
+    + 无需记录何时购入股票，每次都用当日价格跟前日价格进行比较，每日可能的利润都卷入计算过程
+  * `***` [393. Best Time to Buy and Sell Stock IV](http://www.lintcode.com/en/problem/best-time-to-buy-and-sell-stock-iv/)
+  * `***` [76. Longest Increasing Subsequence](http://www.lintcode.com/en/problem/longest-increasing-subsequence/)
+    + O(nlogn) Binary Search
+  * `**` [602. Russian Doll Envelopes](http://www.lintcode.com/en/problem/russian-doll-envelopes/)
+
+### Chapter 4
+- 划分型动态规划
+  * `*` [513. Perfect Squares](http://www.lintcode.com/en/problem/perfect-squares/)
+  * `***` [108. Palindrome Partitioning II](http://www.lintcode.com/en/problem/palindrome-partitioning-ii/)
+  * `***` [437. Copy Books](http://www.lintcode.com/en/problem/copy-books/)
+    + pure dp
+    + Binary Search
+- 博弈动态规划
+  * [394. Coins in a Line](http://lintcode.com/en/problem/coins-in-a-line/)
+- 背包型动态规划
+  * [92. Backpack](http://lintcode.com/en/problem/backpack/)
+  * [563. Backpack V](http://lintcode.com/en/problem/backpack-v/)
+  * `*` [564. Backpack VI](http://lintcode.com/en/problem/backpack-vi/)
+  * `*` [125. Backpack II](http://www.lintcode.com/en/problem/backpack-ii/)
+  * `*` [440. Backpack III](http://www.lintcode.com/en/problem/backpack-iii/)
+
+### Chapter 5
+- 区间型动态规划(适合记忆化搜索来解题)
+  * 关键字：去头去尾，消去
+  * `**` [667. Longest Palindromic Subsequence](http://www.lintcode.com/en/problem/longest-palindromic-subsequence/)
+    + 思考如何打印路径
+    + 如何利用记忆化搜索来解题
+  * `**` [396. Coins in a Line III](http://www.lintcode.com/en/problem/coins-in-a-line-iii/)
+    + 利用差额求解 `f[i][j] = max(A[i]-f[i+1][j],A[j]-f[i][j-1])`
+    + If n is even. Is there any hacky algorithm that can decide whether first player will win or lose in O(1) memory and O(n) time?
+  * `***` [430. Scramble String](http://www.lintcode.com/en/problem/scramble-string/)
+    + f[i][j][len]
+  * `***` [168. Burst Balloons](http://www.lintcode.com/en/problem/burst-balloons/)
+    + 消去题 -> 倒着想
+  * 矩阵相乘 matrix multiplication DP
+
+### Chapter 6
+- 双序列型动态规划
+  * [77. Longest Common Subsequence](http://www.lintcode.com/en/problem/longest-common-subsequence/)
+  * [29. Interleaving String](http://www.lintcode.com/en/problem/interleaving-string/)
+  * [119. Edit Distance](http://www.lintcode.com/en/problem/edit-distance/)
+  * `**` [118. Distinct Subsequences](http://www.lintcode.com/en/problem/distinct-subsequences/)
+    + don't write `f[i - 1]` as `f[i - i]`
+  * `**` [154. Regular Expression Matching](http://www.lintcode.com/en/problem/regular-expression-matching/)
+  * `*` [192. Wildcard Matching](http://www.lintcode.com/en/problem/wildcard-matching/)
+  * `***` [668. Ones and Zeroes](http://www.lintcode.com/en/problem/ones-and-zeroes/)
+    + 双背包
+
+### Chapter 7
+- hard
+  * `**` [752. Rogue Knight Sven](http://lintcode.com/en/problem/rogue-knight-sven/)
+    + pre sum 优化复杂度为O(mn)
+  * `**` [89. k Sum](http://www.lintcode.com/en/problem/k-sum/)
+  * `***` [76. Longest Increasing Subsequence](http://www.lintcode.com/en/problem/longest-increasing-subsequence/)
+    + binary search O(n*log(n))
+    + dp O(n^2)
+  * `***` [623. K Edit Distance](http://www.lintcode.com/en/problem/k-edit-distance/)
+  * `**` [622. Frog Jump](http://www.lintcode.com/en/problem/frog-jump/)
+    + 注意优化，不要look back
+  * `**` [676. Decode Ways II](http://www.lintcode.com/en/problem/decode-ways-ii/)
 
 ## By category
-- [math](https://leetcode.com/tag/math/)
+### [math](https://leetcode.com/tag/math/)
   * `*`[418. Integer to Roman](http://www.lintcode.com/en/problem/integer-to-roman/)
-- matrix
+### matrix
   * `*`[161. Rotate Image](http://www.lintcode.com/en/problem/rotate-image/)
   * `**`[654. Sparse Matrix Multiplication](http://www.lintcode.com/en/problem/sparse-matrix-multiplication/)
     ```java
@@ -251,15 +327,15 @@ SOLID:
         }
     }
     ```
-- linkedlist
+### linkedlist
   * `**`[141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/description/)
     + remove head.next from the linkedlist: `head.next = head.next.next;`
   * [116. Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/)
-- **O(1) space**
-- BFS
+### **O(1) space**
+### BFS
   * `**`[127. Word Ladder](https://leetcode.com/problems/word-ladder/description/)
     + [Two-end BFS](https://leetcode.com/problems/word-ladder/discuss/40711/Two-end-BFS-in-Java-31ms)
-- q select
+### q select
   * `***`[5. Kth Largest Element](http://www.lintcode.com/en/problem/kth-largest-element/)
     + `ThreadLocalRandom.current().nextInt(lo, hi + 1)`
     + There are two scenarios after the scan & swap
@@ -268,13 +344,13 @@ SOLID:
         * if hi and lo is in bound, num[hi]<=pivot, num[lo]>=pivot
       - (hi) (pivot) (lo)
         * if the index of pivot is k - 1, return pivot
-- Sorting
+### Sorting
   * **TODO**
-- [Backtracking](http://www.lintcode.com/en/tag/backtracking/)
+### [Backtracking](http://www.lintcode.com/en/tag/backtracking/)
   * [135. Combination Sum](http://www.lintcode.com/en/problem/combination-sum/)
     + remove dup first
   * `***`[634. Word Squares](http://www.lintcode.com/en/problem/word-squares/)
-- [Segment Tree](http://www.lintcode.com/en/tag/segment-tree/)
+### [Segment Tree](http://www.lintcode.com/en/tag/segment-tree/)
   * `*`[439. Segment Tree Build II](http://lintcode.com/en/problem/segment-tree-build-ii/)
   * `*`[247. Segment Tree Query II](http://lintcode.com/en/problem/segment-tree-query-ii/)
   * `*`[203. Segment Tree Modify](http://www.lintcode.com/en/problem/segment-tree-modify/)
@@ -282,19 +358,38 @@ SOLID:
   * `***`[249. Count of Smaller Number before itself](http://www.lintcode.com/en/problem/count-of-smaller-number-before-itself/)
   * `**`[307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/description/)
   * `**`[751. John's business](http://lintcode.com/en/problem/johns-business/)
-- [Binary Indexed Trees | FenwickTree](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/)
+### [Binary Indexed Trees | FenwickTree](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/)
   * `**`[307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/description/)
     + https://www.youtube.com/watch?v=WbafSgetDDk
   * `***`[308. Range Sum Query 2D - Mutable](https://leetcode.com/problems/range-sum-query-2d-mutable/description/)
   * `***`[315. Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/description/)
     + https://www.youtube.com/watch?v=2SVLYsq5W8M
-- DP
+### DP
   * `**`[139. Word Break](https://leetcode.com/problems/word-break/description/)
   * `***`[494. Target Sum](https://leetcode.com/problems/target-sum/description/)
   * `**`[5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)
     + [solution](https://leetcode.com/problems/longest-palindromic-substring/discuss/2921/Share-my-Java-solution-using-dynamic-programming)
-- Manacher’s Algorithm
+### Manacher’s Algorithm
   * `***`[5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)
+### [Topological Sort](https://leetcode.com/tag/topological-sort/)
+### radix sort
+
+## 跟花花酱练习CPP
+- unordered_map
+  * [if the value doesn't exist in the map, operator[] will default-construct and insert one](https://stackoverflow.com/questions/6897737/using-the-operator-efficiently-with-c-unordered-map)
+    ```cpp
+    iterator iter = map.find(key);
+    if(iter == map.end()){
+        iter = map.insert(value_type(key, int())).second;
+    }
+    return iter;
+    ```
+  * [LeetCode 560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
+
+## 竞赛中出现的常见错误
+- 多层循环中continue和break用错
+- 直接使用了Trie的root
+-
 
 ## leetcode contest
 - [Weekly Contest 68](https://leetcode.com/contest/weekly-contest-68/)
@@ -363,6 +458,30 @@ SOLID:
   * [781. Rabbits in Forest](https://leetcode.com/contest/weekly-contest-71/problems/rabbits-in-forest/)
   * `*`[780. Reaching Points](https://leetcode.com/contest/weekly-contest-71/problems/reaching-points/)
   * `***`[782. Transform to Chessboard](https://leetcode.com/contest/weekly-contest-71/problems/transform-to-chessboard/)
+- [Weekly Contest 76](https://leetcode.com/contest/weekly-contest-76)
+  * `*` [802. Find Eventual Safe States](https://leetcode.com/contest/weekly-contest-76/problems/find-eventual-safe-states/)
+  * `***` [803. Bricks Falling When Hit](https://leetcode.com/problems/bricks-falling-when-hit/)
+    ``` java
+    int dfs(int[][] grid, int x, int y) {
+  		if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == 0 || grid[x][y] == 2)
+  			return 0;
+  		grid[x][y] = 2;
+  		int ans = 1;
+  		ans += dfs(grid, x, y - 1);
+  		ans += dfs(grid, x, y + 1);
+  		ans += dfs(grid, x - 1, y);
+  		ans += dfs(grid, x + 1, y);
+  		return ans;
+  	}
+    ```
+    + other solution [disjoint set union structure](https://leetcode.com/articles/bricks-falling-when-hit/)
+- [Weekly Contest 77](https://leetcode.com/contest/weekly-contest-77/)
+  * [805. Split Array With Same Average](https://leetcode.com/problems/split-array-with-same-average/description/)
+    + 变换求average的方法：curSum / curlen == total / totalLen
+      - => curSum = total * curlen / totalLen，必须要能整除
+- [Weekly Mock Interview Contest #11 (For A-Company Onsite)](http://www.lintcode.com/contest/22/)
+  * [941. Sliding Puzzle](http://www.lintcode.com/en/problem/sliding-puzzle/)
+  * [950. Sliding Puzzle III](http://www.lintcode.com/en/problem/sliding-puzzle-iii/)
 
 ## lintcode contest
 - [Weekly Contest 1](http://lintcode.com/contest/9/)
@@ -382,6 +501,12 @@ SOLID:
 - [Weekly Mock Interview Contest #7 (For Bloomberg Onsite)](http://www.lintcode.com/contest/16/)
   * [830. String Sort](http://www.lintcode.com/en/problem/string-sort/)
     + `new String(str.chars().boxed().sorted(Comparator.comparing(p -> -set.get(p)[1]).thenComparing(p -> (int) p)).mapToInt(e -> e).toArray(), 0, n);`
+- [Weekly Mock Interview Contest #8 (For Microsoft Onsite)](http://www.lintcode.com/contest/17/)
+  * `***` [841. String Replace](http://www.lintcode.com/en/problem/string-replace/)
+  * `*` [842.Origami](http://www.lintcode.com/en/problem/origami/)
+- [Weekly Mock Interview Contest #9 (For Facebook Onsite)](http://www.lintcode.com/contest/18/)
+  * `**` [722. Maximum Subarray VI](http://www.lintcode.com/en/problem/maximum-subarray-vi/)
+    + use ROOT instead of root so that you won't mistakenly use root as node
 
 ## [Google](http://lintcode.com/problem/?tag=google&ordering=-frequency)
 - [面筋](https://docs.google.com/document/d/191QbufdfYBF4fXPAtwJ4xQBPLgAcy2VsgHqBU9JncbM/mobilebasic)
@@ -426,3 +551,72 @@ SOLID:
          int number_of_travelled;
       }
     + number_of_travelled 存了一个Node走过多少次，每次机器人决定往哪里走的时候，走向那些node travelled较少的点
+
+## Facebook
+- [top facebook questions](https://leetcode.com/problemset/top-facebook-questions/)
+  * [461. Hamming Distance](https://leetcode.com/problems/hamming-distance/description/)
+  * `*` [535. Encode and Decode TinyURL](https://leetcode.com/problems/encode-and-decode-tinyurl/description/)
+  * `*` [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
+    + rewrite helper function first: remove(node), insert(pre, node)
+  * [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/description/)
+- [Get Well Prepared for Facebook overview](https://leetcode.com/explore/interview/card/facebook/)
+  * [67. Add Binary](https://leetcode.com/problems/add-binary/description/)
+    + `stringBuilder.reverse()`
+  * [15. 3Sum](https://leetcode.com/problems/3sum/description/)
+  * [Valid Palindrome](https://leetcode.com/explore/interview/card/facebook/5/round-1-phone-interview/288/)
+    + `string.toLowerCase()`
+  * [Maximum Size Subarray Sum Equals k](https://leetcode.com/explore/interview/card/facebook/5/round-1-phone-interview/297/)
+    + `Math.max(max, i - map.getOrDefault(sum - k, i))`
+    + `map.putIfAbsent(sum, i)`
+  * [Binary Tree Paths](https://leetcode.com/explore/interview/card/facebook/52/trees-and-graphs/280/)
+    + `String.join("->", Iterable<? extends CharSequence> elements)`
+  * `*` [Convert Binary Search Tree to Sorted Doubly Linked List](https://leetcode.com/explore/interview/card/facebook/52/trees-and-graphs/544/)
+  * `*` [17. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/)
+    + `Character.getNumericValue(c);`
+    + use LinkedList as a FIFO queue
+  * `***` [Remove Invalid Parentheses](https://leetcode.com/explore/interview/card/facebook/53/recursion-3/324/)
+  * `*` [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
+    + 可以二分一次，也可以先找出最值然后二分
+    + good example to use two style of
+      - `while (lo + 1 < hi)` need to check lo & hi afterward
+      ```java
+      // no need to check A[lo] or A[hi]
+      while (lo <= hi){
+          int mid = lo + (hi - lo) / 2;
+          if (A[mid] == target){
+              return mid;
+          } else if (A[mid] < target){
+              lo = mid + 1;
+          } else {
+              hi = mid - 1;
+          }
+      }
+      ```
+  * `***` [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/)
+
+- Dynamic Programming
+  * `***` [Minimum Window Subsequence](https://leetcode.com/problems/minimum-window-subsequence/description/)
+    + `Arrays.fill(f[i],-1);`
+- Other
+  * `*` [Divide Two Integers](https://leetcode.com/explore/interview/card/facebook/57/others-3/308/)
+  * [Integer to English Words](https://leetcode.com/explore/interview/card/facebook/57/others-3/273/)
+
+## Dropbox
+  * `***` [418. Sentence Screen Fitting](https://leetcode.com/problems/sentence-screen-fitting/description/)
+
+## Airbnb
+- [Airbnb leetcode](https://leetcode.com/company/airbnb/)
+  * [251. Flatten 2D Vector](https://leetcode.com/problems/flatten-2d-vector/description/)
+    + `iter.hasNext()` `iter.next()`
+  * `***` [751. IP to CIDR](https://leetcode.com/problems/ip-to-cidr/description/)
+    + `Integer.lowestOneBit(i)`
+  * `***` [269. Alien Dictionary](https://leetcode.com/problems/alien-dictionary/description/)
+  * `***` [755. Pour Water](https://leetcode.com/problems/pour-water/description/)
+    + it's easier to solve recursively.
+  * `**` [68. Text Justification](https://leetcode.com/problems/text-justification/description/)
+    + `new StringBuilder(maxWidth)` will help you beat 99%
+  * `**` [756. Pyramid Transition Matrix](https://leetcode.com/problems/pyramid-transition-matrix/description/)
+    + dfs + backtracking + reuse same array
+- [Airbnb lintcode](http://www.lintcode.com/problem/?tag=airbnb)
+  * `***` [775. Palindrome Pairs](http://www.lintcode.com/en/problem/palindrome-pairs/)
+  * `***` [635. Boggle Game](http://www.lintcode.com/en/problem/boggle-game/)

@@ -1,3 +1,4 @@
+- giraffe 长颈鹿
 - ethos
 - inexplicably
 - egalitarian

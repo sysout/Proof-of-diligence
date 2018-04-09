@@ -1,4 +1,25 @@
+## installation
+```
+brew cask install caskroom/versions/java8
+```
+
 ## Enum
+
+## Operators
+- [:: (double colon) Method References in Java 8](https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html)
+  * There are four kinds of method references
+    + ContainingClass::staticMethodName
+    + containingObject::instanceMethodName
+    + ContainingType::methodName
+      ```
+      String[] stringArray = { "Barbara", "James", "Mary", "John",
+          "Patricia", "Robert", "Michael", "Linda" };
+      Arrays.sort(stringArray, String::compareToIgnoreCase);
+      // The method reference would invoke the method a.compareToIgnoreCase(b)
+      ```
+    + ClassName::new
+
+
 
 ## [precedence](https://introcs.cs.princeton.edu/java/11precedence/)
 ![precedence](images/2018/01/precedence.png)
@@ -95,13 +116,25 @@ private static void dateTimes() {
 char ca[] = {'a', 'b', 'c'};
 char[] ca = {'a', 'b', 'c'};
 ```
+- convert list integer array int
+  * `list.stream().mapToInt(Integer::intValue).toArray();`
+    + intValue is not static
 
 ## String
+```
+str.split("\\s+"); // split by space
+str.split("\\."); // split by dot, for example 255.255.255.255
+```
 ### StringBuilder
 ### [String Formatting](https://dzone.com/articles/java-string-format-examples)
 ```java
 String output = String.format("%s = %d", "joe", 35);
 System.out.printf("My name is: %s%n", "joe");
+// reverse a String
+new StringBuilder(s).reverse().toString();
+// join a list of String
+List<String> list = Arrays.asList("foo", "bar", "baz");
+String.join("->", list);
 ```
 ## Sort & Compare
 ```Java
@@ -172,3 +205,50 @@ relationship.computeIfAbsent(from_user_id, setGen).add(to_user_id);
 ```
 
 ### TreeMap
+
+## java.util.concurrent
+
+### ThreadLocalRandom
+
+```java
+import java.util.concurrent.ThreadLocalRandom;
+
+/**
+ * @author ashraf
+ *
+ */
+public class ThreadLocalRandomTest {
+
+	public static void main(String[] args) {
+
+		System.out.println("Random int:");
+		// Returns a pseudorandom, uniformly distributed integer value between 0
+		// (inclusive) and 10000 (exclusive)
+		System.out.println(ThreadLocalRandom.current().nextInt(10000));
+
+		// Returns a pseudorandom, uniformly distributed int value between 5000
+		// (inclusive) and 10000 (exclusive)
+		System.out.println(ThreadLocalRandom.current().nextInt(5000, 10000));
+
+		System.out.println("Random long:");
+		// Returns a pseudorandom, uniformly distributed long value between 0
+		// (inclusive) and 10000 (exclusive)
+		System.out.println(ThreadLocalRandom.current().nextLong(10000));
+
+		// Returns a pseudorandom, uniformly distributed long value between 5000
+		// (inclusive) and 10000 (exclusive)
+		System.out.println(ThreadLocalRandom.current().nextLong(5000, 10000));
+
+		System.out.println("Random double:");
+		// Returns a pseudorandom, uniformly distributed long value between 0
+		// (inclusive) and 10000 (exclusive)
+		System.out.println(ThreadLocalRandom.current().nextDouble(10000));
+
+		// Returns a pseudorandom, uniformly distributed long value between 5000
+		// (inclusive) and 10000 (exclusive)
+		System.out.println(ThreadLocalRandom.current().nextDouble(5000, 10000));
+
+	}
+
+}
+```

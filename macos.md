@@ -10,3 +10,5 @@
 
 - shortcuts
   * <kbd>^ ⌘ space</kbd> to bring up the characters menu
+
+- [Turn on "three finger drag" for your Force Touch trackpad](https://support.apple.com/en-us/HT204609)

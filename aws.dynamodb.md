@@ -19,3 +19,6 @@
   * only created on table creation v.s. GSI can be created anytime
   * LSI share wcu and rcu v.s. GSI have dedicated WCU and RCU
   * consistent and eventually consistent modes v.s. GSI eventually consistent reads only
+
+## [composite primary key](https://stackoverflow.com/questions/32620215/3-fields-composite-primary-key-unique-item-in-dynamodb)
+- cannot have more than two attributes form your primary key (hash+range)

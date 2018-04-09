@@ -17,3 +17,5 @@
     + Add/remove line or block comment
   * ⇧⌘F7
     + Highlight usages in file
+  * ⇧⌘U
+    + toggle upper and lower case
