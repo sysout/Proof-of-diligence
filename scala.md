@@ -1,12 +1,24 @@
 ## List of what I think I don't know, yet
 - scala symbol 'abc
   * Lisp (which uses 'abcd like Scala), Ruby (:abcd), Erlang and Prolog (abcd; they are called atoms instead of symbols)
-- sbt 
+- type safe
+  * https://www.tikalk.com/posts/2010/11/08/type-safe-builder-in-scala-using-type-constraints/
 
+
+## Install
+```
+brew install scala
+```
+https://www.jetbrains.com/help/idea/run-debug-and-test-scala.html
+- [Add jar file to Scala REPL](https://alvinalexander.com/scala/scala-how-add-jar-file-scala-repl-classpath-command-line)
+  * `scala> :require myjar.jar`
+  *
 
 ## Practices
+- https://www.scala-exercises.org/
 - [1. Two Sum](https://leetcode.com/problems/two-sum/description/)
   * [sample solution](https://discuss.leetcode.com/topic/107183/scala-solutions)
+
     ```scala
     import scala.collection.mutable
 
@@ -22,11 +34,30 @@
         }
     }
     ```
+- [219. Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/description/)
+  * [for comprehensions with Options](http://markhneedham.com/blog/2011/09/15/scala-for-comprehensions-with-options/)
+
+    ```scala
+    import scala.collection.mutable._;
+
+    object Solution {
+        def containsNearbyDuplicate(nums: Array[Int], k: Int): Boolean = {
+            var map = Map[Int, Int]();
+            for (a @ (v, i) <- nums.zipWithIndex){
+                for (j <- map.get(v)) if (i - j <= k) return true
+                map += a
+            }
+            return false
+        }
+    }
+    ```
 
 ## Syntax
+- [What do all of Scala's symbolic operators mean?](https://stackoverflow.com/questions/7888944/what-do-all-of-scalas-symbolic-operators-mean)
 - [Scala methods: dots, spaces, and parentheses](https://alvinalexander.com/scala/scala-methods-dots-spaces-single-one-parameter)
   * if a Scala method **takes a single parameter**, like this `object.method(param)`, can be written as `object method param`
 - [Using the Scala Option, Some, and None idiom](https://alvinalexander.com/scala/using-scala-option-some-none-idiom-function-java-null)
+
   ```scala
   def toInt(in: String): Option[Int] = {
       try {
@@ -46,31 +77,160 @@
   * Case classes are compared by structure and not by reference
 - Seq
   * Seq is a good generalization for sequences, so if you program to interfaces, you should use that. Note that there are actually three of them: **collection.Seq**, **collection.mutable.Seq** and **collection.immutable.Seq**, and it is the latter one that is the "default" imported into scope.
+- [cast a Scala object from one type to another](https://alvinalexander.com/scala/how-to-cast-objects-class-instance-in-scala-asinstanceof)
 
+  ```scala
+  import javax.script._
+  val engine = new ScriptEngineManager().getEngineByName("js")
+  val ans = engine.eval("4*5").asInstanceOf[Int]
+  ```
+- [new & companion object's apply method](https://stackoverflow.com/questions/9727637/new-keyword-in-scala)
+  * Use the new keyword when you want to refer to a class's own constructor
+  * Omit new if you are referring to the companion object's apply method
+  * Java classes rarely have companion objects with an apply method, so you must use new and the actual class's constructor
+- [initialization](http://www.scala-lang.org/old/node/8566)
+  * Array are zero initialized by JVM
 
+  ```scala
+  var b : Byte // error
+  var b: Byte = 0
+  var b: Byte = _
+  ```
+- [underscore](https://stackoverflow.com/questions/8000903/what-are-all-the-uses-of-an-underscore-in-scala)
+- [Existential types in Scala](https://www.cakesolutions.net/teamblogs/existential-types-in-scala)
+- Why this doesn't work?
+
+  ```scala
+  val customers = collection.mutable.Map(100 -> "Paul Smith",
+    101 -> "Sally Smith")
+  customers += (102, "Xiong") // error
+  customers += (102 -> "Xiong") // OK!!!
+  var a = (102, "Xiong")
+  customers += a // OK!!!
+  ```
+### String
+- [string comparison](https://alvinalexander.com/scala/how-to-test-string-equality-in-scala-cookbook)
+  * In Scala, the == method defined in the AnyRef class first checks for null values, and then calls the equals method on the first object (i.e., this) to see if the two objects are equal. As a result, you also don’t have to check for null values when comparing strings
+
+### Function, Function0 to Function22
+- https://www.scala-lang.org/api/current/scala/Function0.html
+
+### [reference equality](https://stackoverflow.com/questions/6835578/scala-reference-equality)
+
+```scala
+val x = new Obj
+val y = x
+x eq y // evaluates to true
+x ne y // evaluates to false
+```
+
+### [Either, Left, and Right](https://alvinalexander.com/scala/scala-either-left-right-example-option-some-none-null)
+
+### Implicit
+[Keynote - What to Leave Implicit by Martin Odersky](https://www.youtube.com/watch?v=Oij5V7LQJsA)
+[Scala - How to add new methods to existing classes](https://alvinalexander.com/scala/scala-how-to-add-new-methods-to-existing-classes)
+
+## [Scala Advanced, Part 1 - The Scala Type System](https://www.udemy.com/scala-advanced-part-1-the-scala-type-system/learn/v4/overview)
+```scala
+import scala.annotation.implicitNotFound
+
+@implicitNotFound("You need to define a CompareT for ${T}")
+abstract class CompareT[T] {
+  def isSmaller(i1: T, i2: T): Boolean
+  def isLarger(i1: T, i2: T): Boolean
+}
+
+def genInsert[T: Ordering](item: T, rest: List[T]): List[T] = {
+  val cmp = implicitly[Ordering[T]]
+  rest match {
+    case Nil => List(item)
+    case head :: _ if cmp.lt(item, head) => item :: rest
+    case head :: tail => head :: genInsert(item, tail)
+  }
+}
+
+def genSort[T: Ordering](xs: List[T]): List[T] = xs match {
+  case Nil => Nil
+  case head :: tail => genInsert(head, genSort(tail))
+}
+
+val nums = List(1,4,3,2,6,5)
+
+genSort(nums)
+
+case class Person(first: String, age: Int)
+
+object Person {
+  implicit object PersonOrdering extends Ordering[Person] {
+    override def compare(x: Person, y: Person): Int = x.age - y.age
+  }
+}
+
+implicit object POrdering2 extends Ordering[Person] {
+  override def compare(x: Person, y: Person) = 0
+}
+
+val people = List(
+  Person("Fred", 25),
+  Person("Sally", 22),
+  Person("George", 53)
+)
+
+genSort(people)
+```
+
+## TODO
+- Predef
+  * classOf[T]
+- trait xxxx extends scala.AnyRef
+- scala.Unit
+  * Unit is a subtype of scala.AnyVal. There is only one value of type Unit , () , and it is not represented by any object in the underlying runtime system. A method with return type Unit is analogous to a Java method which is declared void
+- sealed abstract class
+  * eg. sbt.SettingKey
 
 
 ## [Effective Scala](https://www.youtube.com/watch?v=TNSe0QzLx4E)
 - use expressions, not statements
-```scala
-def findPeopleIn(city: String, people: Seq[People]) : Set[People] = {
-  for {
-    person <- people.toSet[People]
-    address <- person.addresses
-    if address.city == city
-  } yield person
-}
-```
+  * for expression: start with a set, return with a set
+
+    ```scala
+    def findPeopleIn(city: String, people: Seq(People)): Set[People] = {
+      val found = new mutable.HashSet[People]
+      for (person <- people){
+        for (address <- person.addresses){
+          if (address.city = city)
+            found.put(person);
+        }
+      }
+      return found
+    }
+
+    def findPeopleIn(city: String, people: Seq[People]) : Set[People] = {
+      for {
+        person <- people.toSet[People]
+        address <- person.addresses
+        if address.city == city
+      } yield person
+    }
+    ```
+
 - use REPL
 - Array is mutable, Vector is immutable
-- use **case class**
+  * `var addresses: Array[Address] = Array.empty`
+  * `var addresses: Vector[Address] = Vector.empty`
+- use **case class** and `copy` method
+  * Automatic equality
+  * Automatic hashcode
+  * `case class Person(addresses: Vector[Address] = Vector.empty)`
+  * `person = person.copy(addresses = newAddresses)`
 - local mutability still ok
-  ```
-  def defaultData: Seq[Int] = {
-    val a = new ArrayBuffer[Int]
-    fillArray(a)
-    a.toSeq
-  }
+
+  ```scala
+    def defaultData: Seq[Int] = {
+      val a = new ArrayBuffer[Int]
+      fillArray(a)
+      a.toSeq
+    }
   ```
 
 
@@ -79,9 +239,11 @@ def findPeopleIn(city: String, people: Seq[People]) : Set[People] = {
   * var v.s. val
     + var can be changed
     + val is like const
+    + interesting read: [Use of def, val, and var in scala](https://stackoverflow.com/questions/4437373/use-of-def-val-and-var-in-scala)
     + When Defining classes
       - both val and var create accessor
-        ```
+
+        ```scala
         class A(a: Int) {}
         // Doesn't compile (value a is not a member of)
         // (new A(1)).a
@@ -91,7 +253,8 @@ def findPeopleIn(city: String, people: Seq[People]) : Set[People] = {
         (new B(1)).b
         //> res0: Int = 1
         ```
-    + interesting read: [Use of def, val, and var in scala](https://stackoverflow.com/questions/4437373/use-of-def-val-and-var-in-scala)
+
+
   * Byte : -128 to 127
   * Char : unsigned max value 65535
   * Short : -32768 to 32767
@@ -239,6 +402,8 @@ object ScalaTut {
   def main(args: Array[String]) {
 ```
 ###  LOOPING
+- [There is no break or continue in Scala](https://stackoverflow.com/questions/2742719/how-do-i-break-out-of-a-loop-in-scala)
+
 ```scala
 // To compile and run in the terminal
 // 1. scalac ScalaTut.scala
@@ -356,6 +521,10 @@ do{
   // Special Characters : \n, \b, \\, \a
 ```
 ###  STRINGS
+- [String Interpolator](https://docs.scala-lang.org/overviews/core/string-interpolation.html)
+  * Prepending s to any string literal allows the usage of variables directly in the string.
+  * Prepending f to any string literal allows the creation of simple formatted strings, similar to printf in other languages. When using the f interpolator, all variable references should be followed by a printf-style format string, like %d
+
 ```scala
 var randSent = "I saw a dragon fly by"
 
@@ -430,6 +599,20 @@ def factorial(num : BigInt) : BigInt = {
 println("Factorial of 4 = " + factorial(4))
 ```
 ###  ARRAYS
+- [array of specified length](https://stackoverflow.com/questions/9413507/scala-creating-a-type-parametrized-array-of-specified-length/9413750)
+  * `val chars = Array[Char](256)`
+    + creates one-element array (with code 256)
+  * `val chars = Array.fill(256){0}`
+    + where {0} is a function to produce elements
+  * `val chars = new Array[Char](256)`
+  * `Array.ofDim[Char](256)`
+
+    ```
+    import scala.reflect._
+    classTag[Char].newArray(256)
+    ```
+
+
 ```scala
 // You'll use arrays when the size is fixed, or an ArrayBuffer for a
 // variable size
@@ -542,8 +725,16 @@ customers(102) = "Megan Swift"
 for((k,v) <- customers)
   printf("%d : %s\n", k, v)
 ```
-###  TUPLES
+### [TUPLES](https://alvinalexander.com/scala/scala-tuple-examples-syntax)
+- A tuple isn't actually a collection; it's a series of classes named Tuple2, Tuple3, etc., through Tuple22. You don't have to worry about that detail, other than knowing that you can have anywhere from two to twenty-two items in a tuple. (And in my opinion, if you have twenty-two miscellaneous items in a bag, you should probably re-think your design.)
+
 ```scala
+scala> val stuff = (42, "fish")
+stuff: (Int, java.lang.String) = (42,fish)
+
+scala> stuff.getClass
+res0: java.lang.Class[_ <: (Int, java.lang.String)] = class scala.Tuple2
+
 // Tuples can hold values of many types, but they are immutable
 
 var tupleMarge = (103, "Marge Simpson", 10.25)

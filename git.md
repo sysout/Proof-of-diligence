@@ -1,6 +1,11 @@
 ## GUI
 https://www.sourcetreeapp.com/
 
+## git log
+```
+git log --graph --pretty=oneline
+```
+
 ## checkout file/folders from remote branch
 ```
 git checkout upstream/master -- folder/file
@@ -52,6 +57,11 @@ git merge somebranch
 ```
 
 ## [Squashing multiple commits into a single one](https://www.youtube.com/watch?v=gXCkYkLQ3To)
+```
+git rebase -i HEAD~4
+# Helpful hint: You can always edit your last commit message, before pushing, by using:
+git commit --amend
+```
 
 ## Checkout github pull requests locally
 https://gist.github.com/piscisaureus/3342247

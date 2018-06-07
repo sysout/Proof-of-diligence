@@ -16,6 +16,8 @@
   console.log(b); // 20
   ```
 
+- [ES6 Map, Set, WeakMap, WeakSet](https://www.sitepoint.com/es6-collections-map-set-weakmap-weakset/)
+
 ## [Rapid JavaScript Training](https://app.pluralsight.com/library/courses/rapid-javascript-training/table-of-contents)
 - Promise & Obervables
   *

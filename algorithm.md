@@ -134,7 +134,7 @@ SOLID:
     }
     ```
   * `***`[390. Find Peak Element II](http://www.lintcode.com/en/problem/find-peak-element-ii/)
-  * [586. Sqrt(x) II](http://www.lintcode.com/en/problem/sqrtx-ii/)
+  * `*` [586. Sqrt(x) II](http://www.lintcode.com/en/problem/sqrtx-ii/)
     + `double eps = 1e-12;`
   * `*`[183. Wood Cut](http://www.lintcode.com/en/problem/wood-cut/)
     + `boolean check(...)`
@@ -373,6 +373,15 @@ SOLID:
   * `***`[5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/description/)
 ### [Topological Sort](https://leetcode.com/tag/topological-sort/)
 ### radix sort
+### Skip List
+  * Redis sorted set is using skip list
+  * [Skip List Insertion](https://www.youtube.com/watch?v=Dx7Hk8-8Kdw)
+### 点在多边形内
+### [Determine if two rectangles overlap each other?](https://stackoverflow.com/questions/306316/determine-if-two-rectangles-overlap-each-other)
+```cpp
+if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
+     RectA.Top > RectB.Bottom && RectA.Bottom < RectB.Top )
+```
 
 ## 跟花花酱练习CPP
 - unordered_map
@@ -482,6 +491,8 @@ SOLID:
 - [Weekly Mock Interview Contest #11 (For A-Company Onsite)](http://www.lintcode.com/contest/22/)
   * [941. Sliding Puzzle](http://www.lintcode.com/en/problem/sliding-puzzle/)
   * [950. Sliding Puzzle III](http://www.lintcode.com/en/problem/sliding-puzzle-iii/)
+- [Weekly Contest 80](https://leetcode.com/contest/weekly-contest-80)
+  * [818. Race Car](https://leetcode.com/problems/race-car/description/)
 
 ## lintcode contest
 - [Weekly Contest 1](http://lintcode.com/contest/9/)
@@ -558,6 +569,7 @@ SOLID:
   * `*` [535. Encode and Decode TinyURL](https://leetcode.com/problems/encode-and-decode-tinyurl/description/)
   * `*` [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
     + rewrite helper function first: remove(node), insert(pre, node)
+    + or use LinkedHashMap
   * [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/description/)
 - [Get Well Prepared for Facebook overview](https://leetcode.com/explore/interview/card/facebook/)
   * [67. Add Binary](https://leetcode.com/problems/add-binary/description/)
@@ -604,19 +616,104 @@ SOLID:
 ## Dropbox
   * `***` [418. Sentence Screen Fitting](https://leetcode.com/problems/sentence-screen-fitting/description/)
 
-## Airbnb
-- [Airbnb leetcode](https://leetcode.com/company/airbnb/)
-  * [251. Flatten 2D Vector](https://leetcode.com/problems/flatten-2d-vector/description/)
-    + `iter.hasNext()` `iter.next()`
-  * `***` [751. IP to CIDR](https://leetcode.com/problems/ip-to-cidr/description/)
-    + `Integer.lowestOneBit(i)`
-  * `***` [269. Alien Dictionary](https://leetcode.com/problems/alien-dictionary/description/)
-  * `***` [755. Pour Water](https://leetcode.com/problems/pour-water/description/)
-    + it's easier to solve recursively.
-  * `**` [68. Text Justification](https://leetcode.com/problems/text-justification/description/)
-    + `new StringBuilder(maxWidth)` will help you beat 99%
-  * `**` [756. Pyramid Transition Matrix](https://leetcode.com/problems/pyramid-transition-matrix/description/)
-    + dfs + backtracking + reuse same array
-- [Airbnb lintcode](http://www.lintcode.com/problem/?tag=airbnb)
-  * `***` [775. Palindrome Pairs](http://www.lintcode.com/en/problem/palindrome-pairs/)
-  * `***` [635. Boggle Game](http://www.lintcode.com/en/problem/boggle-game/)
+## AirBnB
+### [Airbnb leetcode](https://leetcode.com/company/airbnb/)
+- [251. Flatten 2D Vector](https://leetcode.com/problems/flatten-2d-vector/description/)
+  * `iter.hasNext()` `iter.next()`
+- `***` [751. IP to CIDR](https://leetcode.com/problems/ip-to-cidr/description/)
+  * `Integer.lowestOneBit(i)`
+- `***` [269. Alien Dictionary](https://leetcode.com/problems/alien-dictionary/description/)
+- `***` [755. Pour Water](https://leetcode.com/problems/pour-water/description/)
+  * it's easier to solve recursively.
+  * use Deque to save closest lower level solution: [Submission Detail](https://leetcode.com/submissions/detail/150377697/)
+    + 这个方法还有改进空间
+  * 8ms solution without wasting any move: [Submission Detail](https://leetcode.com/submissions/detail/150498898/)
+- `**` [68. Text Justification](https://leetcode.com/problems/text-justification/description/)
+  * `new StringBuilder(maxWidth)` will help you beat 99%
+- `**` [756. Pyramid Transition Matrix](https://leetcode.com/problems/pyramid-transition-matrix/description/)
+  * dfs + backtracking + reuse same array
+- [219. Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/description/)
+  * `if (!set.add(nums[i])) return true;`
+  * `Map.put(K key, V value);` returns the previous value associated with key, or null if there was no mapping for key. (A null return can also indicate that the map previously associated null with key, if the implementation supports null values.)
+- `***` [10. Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/description/)
+- `**` [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/description/)
+  * 快慢指针
+- `**` [190. Reverse Bits](https://leetcode.com/problems/reverse-bits/description/)
+
+    ```java
+    public int reverseBits(int n) {
+            int ret=n;
+            ret = ret >>> 16 | ret<<16;
+            ret = (ret & 0xff00ff00) >>> 8 | (ret & 0x00ff00ff) << 8;
+            ret = (ret & 0xf0f0f0f0) >>> 4 | (ret & 0x0f0f0f0f) << 4;
+            ret = (ret & 0xcccccccc) >>> 2 | (ret & 0x33333333) << 2;
+            ret = (ret & 0xaaaaaaaa) >>> 1 | (ret & 0x55555555) << 1;
+            return ret;
+    }
+    ```
+- `***` [220. Contains Duplicate III](https://leetcode.com/problems/contains-duplicate-iii/description/)
+  * `TreeMap.subMap(fromKey, toKey)`
+    + Returns a view of the portion of this map whose keys range from fromKey, inclusive, to toKey, exclusive.
+  * `using buckets`
+    + [Submission Detail](https://leetcode.com/submissions/detail/149497181/)
+- [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/description/)
+- `***` [787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/description/)
+  * solution 1 dp: 信号：最值 + 状态
+  * solution 2 Bellman-Ford: [beats 99%](https://leetcode.com/submissions/detail/149806355/)
+
+### [Airbnb lintcode](http://www.lintcode.com/problem/?tag=airbnb)
+- `***` [775. Palindrome Pairs](http://www.lintcode.com/en/problem/palindrome-pairs/)
+  * Trie with palin list beats 98%: https://github.com/allaboutjst/airbnb/blob/master/src/main/java/palindrome_pairs/PalindromePairs.java
+- `***` [623. K Edit Distance](http://www.lintcode.com/en/problem/k-edit-distance/)
+- `***` [635. Boggle Game](http://www.lintcode.com/en/problem/boggle-game/)
+
+### Airbnb other
+- `***` [507. Wiggle Sort II](http://www.lintcode.com/en/problem/wiggle-sort-ii/)
+  * quickSelect
+- [AirBnB Interview Questions](https://github.com/allaboutjst/airbnb)
+- [Find median from large file of integers](http://massivealgorithms.blogspot.com/2017/07/find-median-from-large-file-of-integers.html)
+
+## Linkedin
+- [LinkedIn leetcode](https://leetcode.com/company/linkedin/)
+  * `***` [716. Max Stack](https://leetcode.com/problems/max-stack/description/)
+    + PQ 里面不能直接存值，要存引用
+  * `***` [254. Factor Combinations](https://leetcode.com/problems/factor-combinations/description/)
+    + 保持单调性
+    + beats 95%: [Submission Detail](https://leetcode.com/submissions/detail/149988106/)
+  * `***` [698. Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/description/)
+    + dfs + 剪枝 = beats 99.9%: [Submission Detail](https://leetcode.com/submissions/detail/150014845/)
+  * `*` [205. Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/discuss/57796/My-6-lines-solution)
+    + save prev location
+  * `**` [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
+  * `**` [50. Pow(x, n)](https://leetcode.com/problems/powx-n/description/)
+    + overflow: `long l = pos ? n : -(long)n;`
+  * `**` [Locker Problem](https://proofwiki.org/wiki/Locker_Problem)
+    + The square numbered lockers (1, 4, 9...) are open, and all others are closed.
+  * `*` [364. Nested List Weight Sum II](https://leetcode.com/problems/nested-list-weight-sum-ii/description/)
+    + 4ms bfs beats 100%: [Submission Detail](https://leetcode.com/submissions/detail/150188417/)
+      - ans += sum_to_cur_level
+  * `***` [730. Count Different Palindromic Subsequences](https://leetcode.com/problems/count-different-palindromic-subsequences/description/)
+    + super hard ...
+    + https://www.youtube.com/watch?v=UjiFFYU3EKM
+    + 据说被面到730的都挂了。。。
+    + http://www.1point3acres.com/bbs/thread-395874-1-1.html
+  * [671. Second Minimum Node In a Binary Tree](https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/description/)
+    + pruning when node.val >= second_min
+  * `*` [612. K Closest Points](http://www.lintcode.com/en/problem/k-closest-points/)
+  * `**` [81. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
+    + [1,3,1,1,1] 3
+    + [2,2,2,0,2,2] 0
+  * `**` [69. Sqrt(x)](https://leetcode.com/problems/sqrtx/description/)
+    + Integer Newton
+    ```Java
+    long r = x;
+    while (r*r > x)
+        r = (r + x/r) / 2;
+    return (int) r;
+    ```
+- System Design
+  * TODO: calendar design
+
+## Uber
+- [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/description/)
+- 

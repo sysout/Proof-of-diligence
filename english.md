@@ -1,3 +1,6 @@
+- the second to last / the next to last
+- I am impressed by your persistent skepticism for all the things I say
+- ~ is called tilde
 - giraffe 长颈鹿
 - ethos
 - inexplicably

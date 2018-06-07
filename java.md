@@ -36,6 +36,20 @@ brew cask install caskroom/versions/java8
 - exercise
   * https://www.hackerrank.com/contests/hackerrank-hiring-contest/challenges/winning-lottery-ticket/
 
+## Number
+- Integer.bitCount(n)
+- Integer.highestOneBit(n)
+- Integer.lowestOneBit(n)
+- Integer.numberOfLeadingZeros(n)
+- Integer.numberOfTrailingZeros(n)
+- Integer.reverse(n)
+```
+int oldMillion = 1000000;
+int newMillion = 1_000_000;
+byte oldMax = 0b01111111;
+byte newMax = 0b0111_1111;
+```
+
 ## Object
 - .equals() v.s. .hashCode()
   * objects which are .equals() MUST have the same .hashCode()
@@ -112,6 +126,7 @@ private static void dateTimes() {
 - `Arrays.copyOf(T[] original, int newLength)`
 - `Arrays.copyOfRange(T[] original, int from, int to)`
 - `Arrays.fill(int[] a, int val)`
+- `System.arraycopy(Object src, int srcPos, Object dest, int destPos, int length)`
 ```Java
 char ca[] = {'a', 'b', 'c'};
 char[] ca = {'a', 'b', 'c'};
@@ -124,6 +139,7 @@ char[] ca = {'a', 'b', 'c'};
 ```
 str.split("\\s+"); // split by space
 str.split("\\."); // split by dot, for example 255.255.255.255
+str.equalsIgnoreCase(str2);
 ```
 ### StringBuilder
 ### [String Formatting](https://dzone.com/articles/java-string-format-examples)
@@ -174,9 +190,9 @@ Collections.sort(intervals, Comparator.comparing((Interval a) -> a.start).thenCo
 ```
 
 ## Collections
-- Collections.singleton(obj)
-- Collections.singletonList(obj)
-- Collections.singletonMap(key, value)
+- Collections.singleton(obj) // Returns an immutable set
+- Collections.singletonList(obj) // Returns an immutable list
+- Collections.singletonMap(key, value) // Returns an immutable map
 - Collections.removeIf(Predicate<? super E> filter)
   ```java
   public static void main(String[] args) {
@@ -191,7 +207,13 @@ Collections.sort(intervals, Comparator.comparing((Interval a) -> a.start).thenCo
     System.out.println(map);
   }
   ```
+- Collections.reverse(list);
 
+
+### null in Collections
+- most java collections allow null key or value except TreeSet(no null value) and TreeMap(no null key).
+- Deque interface encouraged to prohibit null. ArrayDeque will throw NPE
+  * Deque.poll() return null if the deque is empty
 
 ### List
 - Print list: `intervals.forEach((intervals a) -> System.out.printf("[%d, %d], ", a.start, a.end));`
@@ -202,9 +224,33 @@ Collections.sort(intervals, Comparator.comparing((Interval a) -> a.start).thenCo
 Function<Integer, Set<Integer>> setGen = k -> new HashSet<>();
 Map<Integer, Set<Integer>> relationship = new HashMap<>();
 relationship.computeIfAbsent(from_user_id, setGen).add(to_user_id);
+
+// OR, simply, only works if the map Key is the same type as the set
+relationship.computeIfAbsent(from_user_id, HashSet<Integer>::new).add(to_user_id);
+
+Set<String> intersection = new HashSet<>(buddyWishList);
+intersection.retainAll(myWishList);
 ```
 
 ### TreeMap
+```
+treeMap.subMap(K fromKey, K toKey)
+treeMap.subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)
+
+treeMap.firstEntry()
+
+treeMap.lowerEntry(K key) // an entry with the greatest key less than key
+
+treeMap.floorKey(K key)
+treeMap.floorEntry(K key) // an entry with the greatest key less than or equal to key
+
+treeMap.ceilingKey(K key)
+treeMap.ceilingEntry(K key) // an entry with the least key greater than or equal to key
+
+treeMap.higherEntry(K key) // an entry with the least key greater than key
+
+treeMap.lastEntry()
+```
 
 ## java.util.concurrent
 

@@ -8,3 +8,10 @@ Normalized database are designed to minimize redundancy, while denormalized data
 In Java, two ways of implement threads
 - java.lang.Runnable
 - java.lang.Thread
+
+
+# Other tech interview questions
+- [Write-back vs Write-Through](https://stackoverflow.com/questions/27087912/write-back-vs-write-through)
+  * write back has better performance. It's complex, but more sophisticated. most memory in modern cpu use this policy
+  * The benefit of write-through to main memory is that it simplifies the design of the computer system. With write-through
+  * Write through is also more popular for smaller caches that use no-write-allocate
