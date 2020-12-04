@@ -136,7 +136,7 @@ char[] ca = {'a', 'b', 'c'};
     + intValue is not static
 
 ## String
-```
+```java
 str.split("\\s+"); // split by space
 str.split("\\."); // split by dot, for example 255.255.255.255
 str.equalsIgnoreCase(str2);
@@ -152,6 +152,11 @@ new StringBuilder(s).reverse().toString();
 List<String> list = Arrays.asList("foo", "bar", "baz");
 String.join("->", list);
 ```
+### print any collections
+```java
+System.out.println(visited.stream().map( n -> ""+n.val).collect(Collectors.joining( "," )));
+```
+
 ## Sort & Compare
 ```Java
 List<Integer> list = Arrays.asList(1, 3);

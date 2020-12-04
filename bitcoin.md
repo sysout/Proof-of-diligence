@@ -13,7 +13,7 @@ https://coinloop.io/cryptocurrency-calendar
 
 ## When to buy bitcoin
 - when RSI is below 30
-- the order book shows more buy orders
+- when hashrate/difficulty decreases: https://bitcoinwisdom.com/bitcoin/difficulty
 
 ## Why alt coin increase in value after bitcoin bull run?
 - explanation 1: after bitcoin trader take profit, they can either sit on cash which is risky to store on exchange, or they can buy some alt and withdraw alt to hardware wallet. If small amount of people choose the second option, alt rise.

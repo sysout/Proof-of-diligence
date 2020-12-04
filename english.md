@@ -1,3 +1,8 @@
+- Speaking less facetiously
+- The Chinese tech scene is hell-bent on success
+- natalism
+- larceny
+- perpetrator
 - the second to last / the next to last
 - I am impressed by your persistent skepticism for all the things I say
 - ~ is called tilde
