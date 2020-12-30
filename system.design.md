@@ -48,3 +48,24 @@
       - Hashes
       - Sorted sets
       - Bitmaps and HyperLogLogs
+
+
+- [系统设计System Design]
+  * https://soulmachine.gitbooks.io/system-design/content/cn/bigdata/heavy-hitters.html
+  * red black tree https://www.jianshu.com/p/e136ec79235c
+  * b+ tree etc https://www.jianshu.com/p/b597aa97c9de
+  * https://www.educative.io/courses/grokking-the-system-design-interview
+  * https://www.evernote.com/shard/s576/client/snv?noteGuid=7e58b450-1abe-43a8-bf82-fbf07f1db13c&noteKey=049802174415b418a2e65f75b744ab72&sn=https%3A%2F%2Fwww.evernote.com%2Fshard%2Fs576%2Fsh%2F7e58b450-1abe-43a8-bf82-fbf07f1db13c%2F049802174415b418a2e65f75b744ab72&title=Interview%2BPreparation
+  * https://jobs.1point3acres.com/companies
+
+
+- [面经](https://www.1point3acres.com/bbs/thread-541834-1-1.html)
+  * Design an online reader system. (Amazon) Design an online chat room.
+  * Design an online poker room. (Amazon) Design an online messenger.
+  * Design an online reservation system (air ticket, restaurant/hotel reservation etc) (Amazon) Design a Hotel reservation system which will support the following functions.
+  * Design a voice conferencing system (Amazon)
+    + a) User will get a list of all different types of rooms.
+    + b) User selects a room type & check the room availabilty between the specified dates.
+    + c) User Makes Reservation.
+  * [Discussed about "locking" the room availbilty or not in case if user wants to proceed with reservation] (Amazon)
+  * Design a software for a restaurant (Amazon)

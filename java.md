@@ -139,6 +139,7 @@ char[] ca = {'a', 'b', 'c'};
 ```java
 str.split("\\s+"); // split by space
 str.split("\\."); // split by dot, for example 255.255.255.255
+P.toLowerCase().split("[ !?',;.]+");
 str.equalsIgnoreCase(str2);
 ```
 ### StringBuilder
@@ -154,7 +155,12 @@ String.join("->", list);
 ```
 ### print any collections
 ```java
+// https://howtodoinjava.com/java8/java-8-join-string-array-example/
 System.out.println(visited.stream().map( n -> ""+n.val).collect(Collectors.joining( "," )));
+```
+### print java array
+```java
+System.out.println(Arrays.toString(array));
 ```
 
 ## Sort & Compare
@@ -223,6 +229,14 @@ Collections.sort(intervals, Comparator.comparing((Interval a) -> a.start).thenCo
 ### List
 - Print list: `intervals.forEach((intervals a) -> System.out.printf("[%d, %d], ", a.start, a.end));`
 - `List<Integer> arr=new ArrayList<Integer>(Collections.nCopies(10, 0));`
+- ** double brace initialization
+```java
+ArrayList<String> list = new ArrayList<String>() {{
+    add("A");
+    add("B");
+    add("C");
+}};
+```
 
 ### Map
 ```java
@@ -232,6 +246,8 @@ relationship.computeIfAbsent(from_user_id, setGen).add(to_user_id);
 
 // OR, simply, only works if the map Key is the same type as the set
 relationship.computeIfAbsent(from_user_id, HashSet<Integer>::new).add(to_user_id);
+
+map.merge(sum, 1, Integer::sum);
 
 Set<String> intersection = new HashSet<>(buddyWishList);
 intersection.retainAll(myWishList);

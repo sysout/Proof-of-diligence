@@ -250,6 +250,12 @@ SOLID:
   * `***` [393. Best Time to Buy and Sell Stock IV](http://www.lintcode.com/en/problem/best-time-to-buy-and-sell-stock-iv/)
   * `***` [76. Longest Increasing Subsequence](http://www.lintcode.com/en/problem/longest-increasing-subsequence/)
     + O(nlogn) Binary Search
+    ```java
+    int pos = Arrays.binarySearch(dp, 0, len, cur);
+    if (pos < 0) {
+        pos = - (pos + 1);
+    }
+    ```
   * `**` [602. Russian Doll Envelopes](http://www.lintcode.com/en/problem/russian-doll-envelopes/)
 
 ### Chapter 4
@@ -524,7 +530,7 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
 - sorted by frequency
   * `***`[65. Median of two Sorted Arrays](http://lintcode.com/en/problem/median-of-two-sorted-arrays/)
     + reduce the problem little by little
-  * `*`[134. LRU Cache](http://lintcode.com/en/problem/lru-cache/)
+  * `**`[134. LRU Cache](http://lintcode.com/en/problem/lru-cache/)
     + create two helper method:
       - void remove(Node node)
       - void insertAfter(Node node, Node cur)
@@ -567,7 +573,7 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
 - [top facebook questions](https://leetcode.com/problemset/top-facebook-questions/)
   * [461. Hamming Distance](https://leetcode.com/problems/hamming-distance/description/)
   * `*` [535. Encode and Decode TinyURL](https://leetcode.com/problems/encode-and-decode-tinyurl/description/)
-  * `*` [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
+  * `**` [146. LRU Cache](https://leetcode.com/problems/lru-cache/description/)
     + rewrite helper function first: remove(node), insert(pre, node)
     + or use LinkedHashMap
   * [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/description/)
@@ -587,6 +593,9 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
     + `Character.getNumericValue(c);`
     + use LinkedList as a FIFO queue
   * `***` [Remove Invalid Parentheses](https://leetcode.com/explore/interview/card/facebook/53/recursion-3/324/)
+    ```java
+    if (i > start && s.charAt(i) == s.charAt(i - 1)) continue;
+    ```
   * `*` [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
     + 可以二分一次，也可以先找出最值然后二分
     + good example to use two style of
@@ -605,6 +614,7 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
       }
       ```
   * `***` [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/description/)
+    + [Reorganize String](https://leetcode.com/problems/reorganize-string/)
 
 - Dynamic Programming
   * `***` [Minimum Window Subsequence](https://leetcode.com/problems/minimum-window-subsequence/description/)
@@ -716,4 +726,230 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
 
 ## Uber
 - [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/description/)
-- 
+-
+
+# 2020
+-
+  * [1834. 分组选项](https://www.lintcode.com/problem/grouping-options/description) DP
+    + 每组先留下一个人 剩下的i-j个人尝试分给1组, 2组, ... , j组 不用关心各组的顺序
+dp[i][j] = sum(dp[i - j][k]), where k = 1, 2, 3, ..., j
+    + 另一种解法:
+    dp[i][j]的定义不变
+    转移方程: dp[i][j] = dp[i - j][j] + dp[i - 1][j - 1];
+      - 每组至少2个人 dp[i - j][j]
+      - 直少有1组1个人 dp[i - 1][j - 1]
+
+  * [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
+
+- Permutation
+  * 1.Generate all permutations.
+    + [46. Permutations](https://leetcode.com/problems/permutations/)
+    + [60. Permutation Sequence](https://leetcode.com/problems/permutation-sequence/)
+  * *** [2.Generate next permutation. ](https://leetcode.com/problems/next-permutation/)
+    + leetcode 31. Next Permutation
+    + D.E. Knuth algorithm
+      - P[x] < P[x + 1]
+      - Find the largest y such that P[x]<P[y].
+      - Swap x y
+      - reverse x + 1 ... n
+  * 3.Generate the permutation number k (current problem).
+  * 69. Sqrt(x)
+  ```java
+  class Solution {
+      public int mySqrt(int x) {
+          long d = x;
+          while (d * d > x){
+              d = (d + x/d) / 2;
+          }
+          return (int)d;
+      }
+  }
+  ```
+  * ** 230. Kth Smallest Element in a BST
+    ```java
+    class Solution {
+        public int kthSmallest(TreeNode root, int k) {
+            Deque<TreeNode> dq = new ArrayDeque<>();
+            while (true) {
+                while (root != null) {
+                    dq.push(root);
+                    root = root.left;
+                }
+                root = dq.poll();
+                if (--k == 0) return root.val;
+                root = root.right;
+            }
+        }
+    }
+    ```
+  * [465. Optimal Account Balancing](https://leetcode.com/problems/optimal-account-balancing/)
+  * ** [450. Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/)
+  * [664. 数 1](https://www.lintcode.com/problem/counting-bits/description)
+  ```java
+  public int[] countBits(int num) {
+      // write your code here
+      int[] ans = new int[num + 1];
+      for (int i = 1; i <= num; i++){
+          int a = i & -i;
+          if (a == i){
+              ans[i] = 1;
+          } else {
+              ans[i] = ans[i - a] + 1;
+          }
+      }
+      return ans;
+  }
+  ```
+  * **** [834. Sum of Distances in Tree](https://leetcode.com/problems/sum-of-distances-in-tree/)
+    ```java
+    if (nxt == pre) continue;
+    dfs(nxt, cur, map, weight, dists);
+    int key = (cur<<16) | nxt;
+    int nxtWgt = weight.get(key);
+    wgt += nxtWgt;
+    dist += nxtWgt + dists.get(key);
+    ```
+    ```java
+    public void dfs(int node, int parent) {
+        for (int child: graph.get(node))
+            if (child != parent) {
+                dfs(child, node);
+                // weight
+                count[node] += count[child];
+                // distance
+                ans[node] += ans[child] + count[child];
+            }
+    }
+
+    public void dfs2(int node, int parent) {
+        for (int child: graph.get(node))
+            if (child != parent) {
+                ans[child] = ans[node] + (N - count[child]) - count[child];
+                dfs2(child, node);
+            }
+    }
+    ```
+
+  * *** [dfs][979. Distribute Coins in Binary Tree](https://leetcode.com/problems/distribute-coins-in-binary-tree/)
+  * ** [dfs][968. Binary Tree Cameras](https://leetcode.com/problems/binary-tree-cameras/)
+  * *** [dfs] Delete Edge to minimize subtree sum difference
+    + https://www.geeksforgeeks.org/delete-edge-minimize-subtree-sum-difference/
+    + https://www.hackerrank.com/challenges/cut-the-tree/problem
+  * [dfs][Cut the Tree](https://www.hackerrank.com/challenges/cut-the-tree/problem)
+  *
+
+- amazon OA
+  * https://leetcode.com/discuss/interview-question/344650/Amazon-Online-Assessment-Questions
+  * https://aonecode.com/amazon-interview-questions
+  * [1192. Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/)
+  ```java
+  int[] parents;
+  ```
+  * ** [DP][813. Largest Sum of Averages](https://leetcode.com/problems/largest-sum-of-averages/)
+    + // * * * [ j * i]
+  * * [sorting][692. Top K Frequent Words]
+  * sliding window size = k [Amazon | OA 2019 | Substrings of size K with K distinct chars](https://leetcode.com/discuss/interview-question/370112/)
+  * [819. Most Common Word]
+    ```java
+    P.toLowerCase().split("[ !?',;.]+");
+    ```
+  * [701. Insert into a Binary Search Tree](https://leetcode.com/problems/insert-into-a-binary-search-tree/)
+  * ** [Items in Containers](https://leetcode.com/discuss/interview-question/865660/)
+    + TreeMap ceilingEntry
+    + https://leetcode.com/playground/5D6u3KXS
+  * [Amazon | OA2 | Shopping Patterns](https://leetcode.com/discuss/interview-question/948571/Amazon-or-OA2-or-Shopping-Patterns)
+    + https://github.com/saiobuladinne/Graph/blob/master/Graph/src/com/sai/graph/CountTriangles_And_ShoppingPatterns.java
+    + int val = (graph.get(i).size() + graph.get(j).size() + graph.get(k).size()) - 6;
+  * [Secret Fruit List](https://aonecode.com/amazon-online-assessment-secret-fruits)
+  * [Find Related Products](https://aonecode.com/amazon-online-assessment-find-related-books)
+  * ** [776. Split BST](https://leetcode.com/problems/split-bst/)
+    +
+  * [721. Accounts Merge](https://leetcode.com/problems/accounts-merge/)
+    ```java
+    graph.computeIfAbsent(email, x-> new ArrayList<String>()).add(account.get(1));
+    graph.computeIfAbsent(account.get(1), x-> new ArrayList<String>()).add(email);
+    ```
+  * * [Cut off Rank](https://leetcode.com/discuss/interview-question/947050/Amazon-or-OA-2-or-Cut-off-Rank)
+    + counting sort
+  * [Autoscale Policy](https://leetcode.com/discuss/interview-question/376019/)
+  * ** [DP][1335. Minimum Difficulty of a Job Schedule](https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/)
+  * [1010. Pairs of Songs With Total Durations Divisible by 60](https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/)
+    + int key = (60 - (t % 60)) % 60;
+  * [Prime Air Route](https://leetcode.com/discuss/interview-question/935671/Amazon-SDE1-or-OA-2020-or-Prime-Air-Route)
+    + https://leetcode.com/playground/8e6rpkuV
+    + Integer closestDist = treeMap.floorKey(diff);
+  * [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+    + dq.poll() == dq.pop()
+    + dq.pop() != dq.pollLast()
+  * [1120. Maximum Average Subtree](https://leetcode.com/problems/maximum-average-subtree/)
+  * [1328. Break a Palindrome](https://leetcode.com/problems/break-a-palindrome/)
+    + Check half of the string, replace a non 'a' character to 'a'.
+    + If only one character, return empty string.
+    + Otherwise repalce the last character to 'b'
+- Amazon
+  * `**`[763. Partition Labels](https://leetcode.com/problems/partition-labels/)
+  *
+- facebook
+  * [616. Add Bold Tag in String](https://leetcode.com/problems/add-bold-tag-in-string/)
+    + use a mask = ["*", 0, 0, "*"]
+  * [311. Sparse Matrix Multiplication](https://leetcode.com/problems/sparse-matrix-multiplication/)
+  * ** [269. Alien Dictionary](https://leetcode.com/problems/alien-dictionary/)
+    + similar to [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+      - DFS, Map<Key, boolean> seen
+    + [207. Course Schedule](https://leetcode.com/problems/course-schedule/)
+    + [329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/)
+  * ** [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+    + lo <= hi suitable for quickSelect
+    ```java
+    int qs(int[] A, int k, int start, int end) {
+        int lo = start, hi = end;
+        int piv = A[lo + (hi - lo) / 2];
+        while (lo <= hi) {
+            while (lo <=hi && A[lo] < piv){
+                lo++;
+            }
+            while (lo <=hi && A[hi] > piv) {
+                hi--;
+            }
+            if (lo <= hi) {
+                int t = A[lo];
+                A[lo] = A[hi];
+                A[hi] =t ;
+                lo++;
+                hi--;
+            }
+        }
+        if (k >= lo) return qs(A, k, lo, end);
+        if (k <= hi) return qs(A, k, start, hi);
+        return piv;
+    ```
+  * `**` [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions/)
+    + create class Log to wrap information
+  * `**` [297. Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
+    + preorder DFS traverse
+  * `**` [986. Interval List Intersections](https://leetcode.com/problems/interval-list-intersections/)
+    + two pointers
+  * `***` [708. Insert into a Sorted Circular Linked List](https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/)
+    + case 1: 3,4,1,(2)
+    + case 2: 3,4,(5),1
+    + case 3:
+  * `**` [438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+    + pCount.equals(sCount) // pCount sCount are HashMap
+    + Arrays.equals(pCount, sCount)
+  * `*` [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
+    + ans += Math.min(left_max[i], right_max[i]) - height[i];
+  * [Word Break](https://leetcode.com/problems/word-break/)
+    + DP or Trie
+  * [140. Word Break II](https://leetcode.com/problems/word-break-ii/)
+    + dfs
+  * `*` [670. Maximum Swap](https://leetcode.com/problems/maximum-swap/)
+    + greedy
+  * [398. Random Pick Index](https://leetcode.com/problems/random-pick-index/)
+    + https://www.educative.io/edpresso/what-is-reservoir-sampling
+
+
+- Paypal OA
+  * [Lounge Stocking](https://leetcode.com/discuss/interview-question/667155/paypal-online-assessment)
+
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
