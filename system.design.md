@@ -69,3 +69,20 @@
     + c) User Makes Reservation.
   * [Discussed about "locking" the room availbilty or not in case if user wants to proceed with reservation] (Amazon)
   * Design a software for a restaurant (Amazon)
+
+- `***`[Sharding Pinterest: How we scaled our MySQL fleet](https://medium.com/pinterest-engineering/sharding-pinterest-how-we-scaled-our-mysql-fleet-3f341e96ca6f)
+  * We created a 64 bit ID that contains the shard ID, the type of the containing data, and where this data is in the table (local ID). The shard ID is 16 bits, type ID is 10 bits and local ID is 36 bits. The savvy additionology experts out there will notice that only adds to 62 bits. My past in compiler and chip design has taught me that reserve bits are worth their weight in gold. So we have two (set to zero).
+  * ID = (shard ID << 46) | (type ID << 36) | (local ID<<0)
+  ```SQL
+  CREATE TABLE board_has_pins (
+    board_id INT,
+    pin_id INT,
+    sequence INT,
+    INDEX(board_id, pin_id, sequence)
+  ) ENGINE=InnoDB;
+  ```
+  * ZooKeeper
+  * Mod Shard
+  ```
+  shard = md5(“1.2.3.4") % 4096
+  ```

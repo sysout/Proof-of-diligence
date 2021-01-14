@@ -534,6 +534,8 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
     + create two helper method:
       - void remove(Node node)
       - void insertAfter(Node node, Node cur)
+  * `*` [460. LFU Cache](https://leetcode.com/problems/lfu-cache/)
+    + LinkedHashSet
   * [12. Min Stack](http://lintcode.com/en/problem/min-stack/)
   * [423. Valid Parentheses](http://lintcode.com/en/problem/valid-parentheses/)
   * [407. Plus One](http://lintcode.com/en/problem/plus-one/)
