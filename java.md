@@ -160,7 +160,7 @@ System.out.println(visited.stream().map( n -> ""+n.val).collect(Collectors.joini
 ```
 ### print java array
 ```java
-System.out.println(Arrays.toString(array));
+System.out.println(Arrays.toString(list.toArray()));
 ```
 
 ## Sort & Compare
@@ -254,7 +254,7 @@ intersection.retainAll(myWishList);
 ```
 
 ### TreeMap
-```
+```java
 treeMap.subMap(K fromKey, K toKey)
 treeMap.subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)
 
@@ -274,6 +274,18 @@ treeMap.lastEntry()
 ```
 
 ## java.util.concurrent
+
+### PriorityQueue
+```java
+PriorityQueue<Map.Entry<Integer, Integer>> pq =
+new PriorityQueue<>(
+  (o1, o2) -> o1.getValue() - o2.getValue());
+
+Queue<Integer> pq = new PriorityQueue<>((a, b) -> Integer.compare(b, a);
+Queue<Integer> pq = new PriorityQueue<>((a, b) -> b.compareTo(a));
+Queue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+```
 
 ### ThreadLocalRandom
 

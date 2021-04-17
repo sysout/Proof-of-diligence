@@ -526,6 +526,8 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
     + use ROOT instead of root so that you won't mistakenly use root as node
 
 ## [Google](http://lintcode.com/problem/?tag=google&ordering=-frequency)
+- [1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/)
+  * solution: https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/discuss/609771/JavaC%2B%2BPython-Deques-O(N)
 - [面筋](https://docs.google.com/document/d/191QbufdfYBF4fXPAtwJ4xQBPLgAcy2VsgHqBU9JncbM/mobilebasic)
 - sorted by frequency
   * `***`[65. Median of two Sorted Arrays](http://lintcode.com/en/problem/median-of-two-sorted-arrays/)
@@ -619,7 +621,7 @@ if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
     + [Reorganize String](https://leetcode.com/problems/reorganize-string/)
 
 - Dynamic Programming
-  * `***` [Minimum Window Subsequence](https://leetcode.com/problems/minimum-window-subsequence/description/)
+  * `****` [Minimum Window Subsequence](https://leetcode.com/problems/minimum-window-subsequence/description/)
     + `Arrays.fill(f[i],-1);`
 - Other
   * `*` [Divide Two Integers](https://leetcode.com/explore/interview/card/facebook/57/others-3/308/)
@@ -786,7 +788,7 @@ dp[i][j] = sum(dp[i - j][k]), where k = 1, 2, 3, ..., j
     ```
   * [465. Optimal Account Balancing](https://leetcode.com/problems/optimal-account-balancing/)
   * ** [450. Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/)
-  * [664. 数 1](https://www.lintcode.com/problem/counting-bits/description)
+  * ** [664. 数 1](https://www.lintcode.com/problem/counting-bits/description)
   ```java
   public int[] countBits(int num) {
       // write your code here

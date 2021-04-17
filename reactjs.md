@@ -37,3 +37,7 @@
 
 - coding exercises
   * https://coding-exercises.udemy.com/react
+
+- [Building Real World, Production Quality Apps with React & Redux](https://thinkster.io/tutorials/build-a-real-world-react-redux-application)
+  * https://stackblitz.com/edit/react-redux-realworld?file=index.js
+  * 
